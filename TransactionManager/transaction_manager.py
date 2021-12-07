@@ -246,7 +246,47 @@ class TransactionManager:
         return True
 
     def deadlock_detection(self, time):
-        pass
+        msg = "detecting deadlock @ tick " + str(time)
+        print(msg)
+        # 0: not visited    1: visiting     2:finished
+        visited = collections.defaultdict(int)
+        # for t in self.transaction_list:
+        #     visited[t] = 0
+        for t in visited:
+            if not visited.get(t):
+                stack = [t]
+                # visited[t] = 1
+                while len(stack) != 0:
+                    f = stack[-1]
+                    if not visited.get(f) and f in self.transaction_wait_table:
+                        visited[f] = 1
+                        ghost_transaction_list = []
+                        for c in self.transaction_wait_table[f]:
+                            if c != -1 and c not in self.transaction_list:
+                                ghost_transaction_list.append(c)
+                        for ghost_transaction in ghost_transaction_list:
+                            self.transaction_wait_table[f].remove(ghost_transaction)
+                        for c in self.transaction_wait_table[f]:
+                            if c == -1:
+                                continue
+                            if visited.get(c, 0) == 1:
+                                print("There's a circle. Let the killing begin")
+                                cur = c
+                                youngest_transaction = f
+                                while cur != f:
+                                    if self.transaction_list[cur].start_time > self.transaction_list[
+                                            youngest_transaction].start_time:
+                                        youngest_transaction = cur
+                                    for next_trans in self.transaction_wait_table[cur]:
+                                        if visited[next_trans] == 1:
+                                            cur = next_trans
+                                print("Prey located, let's sacrifice transaction " + str(youngest_transaction))
+                                self.abort(youngest_transaction, time)
+                            elif visited[c] == 0:
+                                stack.append(c)
+                    else:
+                        visited[f] = 2
+                        stack.pop()
 
     def resurrect(self, time):
         msg = "resurrect transactions blocked by failed site"
