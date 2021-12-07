@@ -289,7 +289,7 @@ class TransactionManager:
         msg = "commit transaction " + str(transaction_id)
         print(msg)
         trans = self.transaction_list[transaction_id]
-        self.DM.commit(transaction_id, trans.commit_list)
+        self.DM.commit(trans.commit_list)
         self.release_locks(transaction_id, time)
         del self.transaction_list[transaction_id]
         if transaction_id in self.transaction_wait_table:
@@ -304,7 +304,7 @@ class TransactionManager:
         msg = "release lock hold by T" + str(transaction_id) + " and give them to other blocked transactions"
         print(msg)
         locks = self.transaction_list[transaction_id].lock_list
-        free_datas = self.DM.releaseLocks(transaction_id, locks)
+        free_datas = self.DM.release_locks(transaction_id, locks)
         msg = "newly freed data:"
         for fd in free_datas:
             msg += " " + str(fd)
