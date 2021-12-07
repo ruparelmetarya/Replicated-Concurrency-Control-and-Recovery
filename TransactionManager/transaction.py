@@ -3,6 +3,8 @@ Author: Metarya Ruparel
 email: msr9732@nyu.edu
 Created On: 11/26/2021
 """
+import collections
+
 from Enums.abort_status import AbortStatus
 from Enums.transaction_status import TransactionStatus
 from Logger.logger import Logger
@@ -15,12 +17,12 @@ class Transaction:
         self.ID = _id
         self.start_time = _start_time
         self.read_only = _read_only
-        self.cache = {}
-        self.commit_list = {}
+        self.cache = collections.defaultdict()
+        self.commit_list = collections.defaultdict()
         self.touch_set = set([])
         self.status = TransactionStatus.NORMAL
         self.query_buffer = []
-        self.lock_list = {}
+        self.lock_list = collections.defaultdict()
         self.abort = AbortStatus.FALSE
 
     def dump_transaction_status(self):
