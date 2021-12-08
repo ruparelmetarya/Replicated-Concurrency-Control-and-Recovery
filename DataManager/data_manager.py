@@ -74,7 +74,7 @@ class DataManager:
 
             return False, [-1]
 
-    def write(self, transaction_id, variable_id):
+    def write(self, transaction_id, variable_id, block_table):
         sites = self.var_sites[variable_id]
         blocked_by = set()
         sites_updated = []
@@ -88,11 +88,14 @@ class DataManager:
                     if variable_id in locked_by:
                         write_success = True
                     else:
-                        print("returned here")
                         return False, locked_by
                 elif site.get_lock_type(variable_id) == LockType.READ:
                     if locked_by[0] == transaction_id and len(locked_by) == 1:
-                        continue
+                        print(block_table)
+                        if transaction_id not in block_table:
+                            continue
+                        else:
+                            return False, block_table.get(transaction_id)
                     else:
                         write_success = False
                         for tran in locked_by:

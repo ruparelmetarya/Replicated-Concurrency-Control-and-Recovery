@@ -179,7 +179,7 @@ class TransactionManager:
     def write(self, transaction_id, variable_id, value):
         msg = "T" + str(transaction_id) + " attempt to write " + str(variable_id) + " as " + str(value)
         print(msg)
-        write_result = self.DM.write(transaction_id, variable_id)
+        write_result = self.DM.write(transaction_id, variable_id, self.block_table)
         print("write_result: ", write_result)
         if write_result[0]:
             sites_touched = set(write_result[1])
