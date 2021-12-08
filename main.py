@@ -4,7 +4,7 @@ from TransactionManager.transaction_manager import TransactionManager
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--inputdir', type=str, default='./input/', help='input file name')
-    parser.add_argument('--input', type=str, default='input4', help='input file name')
+    parser.add_argument('--input', type=str, default='input16', help='input file name')
 
     args = parser.parse_args()
 

@@ -169,7 +169,7 @@ class TransactionManager:
             else:
                 blockers = read_result[1]
                 if blockers[0] != -1:
-                    self.data_wait_table.get(variable_id).append(transaction_id)
+                    self.data_wait_table[variable_id].append(transaction_id)
                 for blocker in blockers:
                     self.transaction_wait_table[transaction_id].add(blocker)
                     self.block_table[blocker].append(transaction_id)
@@ -219,8 +219,7 @@ class TransactionManager:
         sites_touched = trans.touch_set
         start_time = trans.start_time
         end_time = time
-        if self.transaction_list[transaction_id].abort == AbortStatus.TRUE or not self.validation(sites_touched,
-                                                                                                  start_time, end_time):
+        if self.transaction_list[transaction_id].abort == AbortStatus.TRUE:
             self.abort(transaction_id, time)
         else:
             self.commit(transaction_id, time)
