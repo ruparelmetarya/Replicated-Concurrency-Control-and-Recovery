@@ -37,7 +37,6 @@ class TransactionManager:
             time += 1
             print("\n" + str(time) + ">>>")
             self.deadlock_detection(time)
-            self.resurrect(time)
             line = line.strip('\n')
             if line[0] in "/#'\"":
                 continue
@@ -185,7 +184,7 @@ class TransactionManager:
         if write_result[0]:
             sites_touched = set(write_result[1])
             self.transaction_list.get(transaction_id).touch_set = sites_touched
-            self.transaction_list.get(transaction_id).set_commit_list(variable_id, value)
+            self.transaction_list.get(transaction_id).set_commit_list(variable_id, (value, set(write_result[1])))
             self.transaction_list.get(transaction_id).status = TransactionStatus.NORMAL
             self.transaction_list.get(transaction_id).set_lock_list(variable_id, 'w')
             if transaction_id in self.transaction_wait_table:
@@ -277,7 +276,7 @@ class TransactionManager:
                                 youngest_transaction = f
                                 while cur != f:
                                     if self.transaction_list[cur].start_time > self.transaction_list[
-                                            youngest_transaction].start_time:
+                                        youngest_transaction].start_time:
                                         youngest_transaction = cur
                                     for next_trans in self.transaction_wait_table[cur]:
                                         if visited[next_trans] == 1:
@@ -289,21 +288,6 @@ class TransactionManager:
                     else:
                         visited[f] = 2
                         stack.pop()
-
-    def resurrect(self, time):
-        msg = "resurrect transactions blocked by failed site"
-        print(msg)
-        if -1 in self.block_table:
-            for i, trans_id in enumerate(self.block_table[-1]):
-                if self.transaction_list[trans_id].status == TransactionStatus.READ:
-                    variable_id = self.transaction_list[trans_id].query_buffer[0]
-                    del self.block_table[-1][i]
-                    self.read(trans_id, variable_id, time)
-                else:
-                    variable_id = self.transaction_list[trans_id].query_buffer[0]
-                    value = self.transaction_list[trans_id].query_buffer[0]
-                    del self.block_table[-1][i]
-                    self.write(trans_id, variable_id, value)
 
     def print_status(self):
         print("transaction_wait_table : ", self.transaction_wait_table.__str__())
