@@ -42,37 +42,39 @@ class DataManager:
     def read(self, trans: Transaction, variable_id) -> (bool, list):
         if trans.read_only:
             if trans.cache and variable_id in trans.cache:
-                print("Read: ",trans.cache[variable_id])
+                print("Read: ", trans.cache[variable_id])
                 return True, []
             elif trans.cache and variable_id not in trans.cache:
                 return False, [-2]
             else:
                 self.generate_cache_for_ro(trans)
                 if variable_id in trans.cache:
-                    print("Read: ",trans.cache[variable_id])
+                    print("Read: ", trans.cache[variable_id])
                     return True, []
                 else:
                     trans.cache.clear()
                     return False, [-1]
         else:
             sites = self.var_sites.get(variable_id)
+            print("stat: ", [site.is_running for site in sites])
             for site in sites:
                 if site.is_running and site.is_valid_variable(variable_id):
                     locked_by = site.lock_table[variable_id].locks
                     if site.get_lock_type(variable_id) == LockType.WRITE:
                         if variable_id in locked_by:
-                            print("Read: ", site.variables.get(variable_id))
+                            print("Read: ", site.variables.get(variable_id).value)
                             return True, [site.site_num]
                         else:
+                            print("returned here")
                             return False, locked_by
                     else:
                         site.add_variable_lock(variable_id, trans.ID, LockType.READ)
-                        print("Read: ", site.variables.get(variable_id))
+                        print("Read: ", site.variables.get(variable_id).value)
                         return True, [site.site_num]
 
             return False, [-1]
 
-    def write(self, transaction_id, variable_id):
+    def write(self, transaction_id, variable_id, block_table):
         sites = self.var_sites[variable_id]
         blocked_by = set()
         sites_updated = []
@@ -89,10 +91,14 @@ class DataManager:
                         return False, locked_by
                 elif site.get_lock_type(variable_id) == LockType.READ:
                     if locked_by[0] == transaction_id and len(locked_by) == 1:
-                        continue
+                        print(block_table)
+                        if transaction_id not in block_table:
+                            continue
+                        else:
+                            return False, block_table.get(transaction_id)
                     else:
                         write_success = False
-                        for tran in blocked_by:
+                        for tran in locked_by:
                             if tran != transaction_id:
                                 blocked_by.add(tran)
         if write_success:
@@ -105,16 +111,14 @@ class DataManager:
             blocked_by = list(blocked_by)
             return False, blocked_by
 
-    def write_val_to_database(self, ID, val):
-        sites = self.var_sites[ID]
-        for site in sites:
-            if site.is_running:
-                site.write_to_variable(ID, val)
+    def write_val_to_database(self, ID, val, sites_touched):
+        for site in sites_touched:
+            self.sites_db.get(site).write_to_variable(ID, val)
 
     def commit(self, commit_list):
         if len(commit_list) != 0:
-            for ID, val in commit_list.items():
-                self.write_val_to_database(ID, val)
+            for ID, (val, sites_touched) in commit_list.items():
+                self.write_val_to_database(ID, val, sites_touched)
 
     def release_locks(self, transaction_id, lock_dict):
         all_freed = []
