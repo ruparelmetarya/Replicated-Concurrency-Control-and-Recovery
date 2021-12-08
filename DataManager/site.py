@@ -36,7 +36,7 @@ class Site:
 
     def get_lock_type(self, lock_id):
         if self._lock_table.get(lock_id, None) is not None:
-            return self._lock_table.get(lock_id)
+            return self._lock_table.get(lock_id).type
         raise ValueError(f'Lock with id %s does not exist.'.format(str(lock_id)))
 
     def is_variable_free(self, variable_id):
@@ -65,6 +65,7 @@ class Site:
         self.variables[variable_id].value = val
 
     def fail_site(self):
+        print("Failing site ", self.site_num)
         self.is_running = False
         self.is_recovered = False
         self.clear_lock_table()

@@ -95,3 +95,14 @@ class Transaction:
     @property
     def start_time(self):
         return self._start_time
+
+    @property
+    def cache(self):
+        return self._cache
+
+    def set_cache(self, key, value):
+        self._cache[key] = value
+
+    @property
+    def ID(self):
+        return self._ID

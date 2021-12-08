@@ -1,16 +1,13 @@
-# This is a sample Python script.
+import argparse
+from TransactionManager.transaction_manager import TransactionManager
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--inputdir', type=str, default='./input/', help='input file name')
+    parser.add_argument('--input', type=str, default='input1', help='input file name')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    args = parser.parse_args()
+
+    TM = TransactionManager()
+    TM.parser(args.inputdir + args.input)
+    TM.print_final_status()

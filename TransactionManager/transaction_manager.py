@@ -85,6 +85,7 @@ class TransactionManager:
                 self.write(transaction_id, variable_id, value)
 
             elif operation_name == "dump":
+                print("operation_arg: ", operation_arg)
                 if len(operation_arg) != 1:
                     errmsg = "error: operation [dump] requires no more than 1 argument, " + str(len(operation_arg))
                     errmsg += " provided in line " + str(line_num)
@@ -143,6 +144,7 @@ class TransactionManager:
         print(msg)
         read_only = self.transaction_list.get(transaction_id).read_only
         read_result = self.DM.read(self.transaction_list.get(transaction_id), variable_id)
+        print("read_result: ", read_result)
         if read_result[0]:
             if not read_only:
                 sites_touched = set(read_result[1])
@@ -168,7 +170,7 @@ class TransactionManager:
             else:
                 blockers = read_result[1]
                 if blockers[0] != -1:
-                    self.data_wait_table.get(variable_id).append(transaction_id)
+                    self.data_wait_table[variable_id].append(transaction_id)
                 for blocker in blockers:
                     self.transaction_wait_table[transaction_id].add(blocker)
                     self.block_table[blocker].append(transaction_id)
@@ -179,6 +181,7 @@ class TransactionManager:
         msg = "T" + str(transaction_id) + " attempt to write " + str(variable_id) + " as " + str(value)
         print(msg)
         write_result = self.DM.write(transaction_id, variable_id)
+        print("write_result: ", write_result)
         if write_result[0]:
             sites_touched = set(write_result[1])
             self.transaction_list.get(transaction_id).touch_set = sites_touched
@@ -217,8 +220,7 @@ class TransactionManager:
         sites_touched = trans.touch_set
         start_time = trans.start_time
         end_time = time
-        if self.transaction_list[transaction_id].abort == AbortStatus.TRUE or not self.validation(sites_touched,
-                                                                                                  start_time, end_time):
+        if self.transaction_list[transaction_id].abort == AbortStatus.TRUE:
             self.abort(transaction_id, time)
         else:
             self.commit(transaction_id, time)
@@ -246,7 +248,47 @@ class TransactionManager:
         return True
 
     def deadlock_detection(self, time):
-        pass
+        msg = "detecting deadlock @ tick " + str(time)
+        print(msg)
+        # 0: not visited    1: visiting     2:finished
+        visited = collections.defaultdict(int)
+        for t in self.transaction_list:
+            visited[t] = 0
+        for t in visited:
+            if not visited.get(t):
+                stack = [t]
+                # visited[t] = 1
+                while len(stack) != 0:
+                    f = stack[-1]
+                    if not visited.get(f) and f in self.transaction_wait_table:
+                        visited[f] = 1
+                        ghost_transaction_list = []
+                        for c in self.transaction_wait_table[f]:
+                            if c != -1 and c not in self.transaction_list:
+                                ghost_transaction_list.append(c)
+                        for ghost_transaction in ghost_transaction_list:
+                            self.transaction_wait_table[f].remove(ghost_transaction)
+                        for c in self.transaction_wait_table[f]:
+                            if c == -1:
+                                continue
+                            if visited.get(c, 0) == 1:
+                                print("There's a circle. Let the killing begin")
+                                cur = c
+                                youngest_transaction = f
+                                while cur != f:
+                                    if self.transaction_list[cur].start_time > self.transaction_list[
+                                            youngest_transaction].start_time:
+                                        youngest_transaction = cur
+                                    for next_trans in self.transaction_wait_table[cur]:
+                                        if visited[next_trans] == 1:
+                                            cur = next_trans
+                                print("Prey located, let's sacrifice transaction " + str(youngest_transaction))
+                                self.abort(youngest_transaction, time)
+                            elif visited[c] == 0:
+                                stack.append(c)
+                    else:
+                        visited[f] = 2
+                        stack.pop()
 
     def resurrect(self, time):
         msg = "resurrect transactions blocked by failed site"
@@ -268,7 +310,7 @@ class TransactionManager:
         print("block_table            : ", self.block_table.__str__())
         print("data_wait_table        : ", self.data_wait_table.__str__())
         for t_id in self.transaction_list:
-            print(self.transaction_list[t_id])
+            print(self.transaction_list[t_id].ID)
 
     def abort(self, transaction_id, time):
         msg = "abort transaction " + str(transaction_id)
@@ -289,7 +331,7 @@ class TransactionManager:
         msg = "commit transaction " + str(transaction_id)
         print(msg)
         trans = self.transaction_list[transaction_id]
-        self.DM.commit(transaction_id, trans.commit_list)
+        self.DM.commit(trans.commit_list)
         self.release_locks(transaction_id, time)
         del self.transaction_list[transaction_id]
         if transaction_id in self.transaction_wait_table:
@@ -304,7 +346,7 @@ class TransactionManager:
         msg = "release lock hold by T" + str(transaction_id) + " and give them to other blocked transactions"
         print(msg)
         locks = self.transaction_list[transaction_id].lock_list
-        free_datas = self.DM.releaseLocks(transaction_id, locks)
+        free_datas = self.DM.release_locks(transaction_id, locks)
         msg = "newly freed data:"
         for fd in free_datas:
             msg += " " + str(fd)
