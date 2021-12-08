@@ -55,3 +55,150 @@
 2021-12-08 03:52:05,673~DEBUG~  Detecting deadlock @ tick 8  ~module:transaction_manager~function:transaction_manager
 2021-12-08 03:52:05,673~INFO~  dump all data  ~module:transaction_manager~function:transaction_manager
 2021-12-08 03:52:05,673~DEBUG~  Calling Data Managers dump().  ~module:transaction_manager~function:transaction_manager
+2021-12-08 04:58:56,623~DEBUG~  Reading file ./input/input21  ~module:transaction_manager~function:transaction_manager
+2021-12-08 04:58:56,624~DEBUG~  Opening file ./input/input21  ~module:transaction_manager~function:transaction_manager
+2021-12-08 04:58:56,624~INFO~  Current Time: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 04:58:56,624~DEBUG~  Detecting deadlock @ tick 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 04:58:56,624~INFO~  begin T1 @ tick 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 04:58:56,624~INFO~  Current Time: 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 04:58:56,624~DEBUG~  Detecting deadlock @ tick 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 04:58:56,624~INFO~  begin T2 @ tick 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 04:58:56,624~INFO~  Current Time: 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 04:58:56,624~DEBUG~  Detecting deadlock @ tick 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 04:58:56,624~INFO~  T2 requested to read x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 04:58:56,624~DEBUG~  Calling the Data Manager to read x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 04:59:57,252~DEBUG~  Reading file ./input/input21  ~module:transaction_manager~function:transaction_manager
+2021-12-08 04:59:57,252~DEBUG~  Opening file ./input/input21  ~module:transaction_manager~function:transaction_manager
+2021-12-08 04:59:57,253~INFO~  Current Time: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 04:59:57,253~DEBUG~  Detecting deadlock @ tick 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 04:59:57,253~INFO~  begin T1 @ tick 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 04:59:57,253~INFO~  Current Time: 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 04:59:57,253~DEBUG~  Detecting deadlock @ tick 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 04:59:57,253~INFO~  begin T2 @ tick 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 04:59:57,253~INFO~  Current Time: 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 04:59:57,253~DEBUG~  Detecting deadlock @ tick 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 04:59:57,253~INFO~  T2 requested to read x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 04:59:57,253~DEBUG~  Calling the Data Manager to read x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,995~DEBUG~  Reading file ./input/input21  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,995~DEBUG~  Opening file ./input/input21  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~INFO~  Current Time: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~DEBUG~  Detecting deadlock @ tick 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~INFO~  begin T1 @ tick 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~INFO~  Current Time: 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~DEBUG~  Detecting deadlock @ tick 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~INFO~  begin T2 @ tick 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~INFO~  Current Time: 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~DEBUG~  Detecting deadlock @ tick 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~INFO~  T2 requested to read x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~DEBUG~  Calling the Data Manager to read x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~INFO~  Read successful. Read site(s): [1]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~INFO~  Current Time: 4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~DEBUG~  Detecting deadlock @ tick 4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~INFO~  T1 requested to write x2 as 202  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~DEBUG~  Calling the Data Manager to write x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~INFO~  Write unsuccessful. Blocked by site(s): [2]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~INFO~  Current Time: 5  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~DEBUG~  Detecting deadlock @ tick 5  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~INFO~  T2 requested to write x2 as 302  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~DEBUG~  Calling the Data Manager to write x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~INFO~  Write unsuccessful. Blocked by site(s): [1]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~INFO~  Current Time: 6  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~DEBUG~  Detecting deadlock @ tick 6  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~ERROR~  Deadlock detected.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~INFO~  Youngest transaction found. Aborting transaction 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,996~INFO~  Abort transaction 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~DEBUG~  Releasing Locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~INFO~  Release lock held by T2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~DEBUG~  Calling Data Managers release lock.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~DEBUG~  newly freed data: x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~DEBUG~  Calling retry after releasing locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~INFO~  Retrying transaction: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~INFO~  Retrying write transaction: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~INFO~  T1 requested to write x2 as 202  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~DEBUG~  Calling the Data Manager to write x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~INFO~  Write successful. Written to site(s): [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~DEBUG~  Calling retry after releasing locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~INFO~  Retrying transaction: 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~INFO~  Retrying write transaction: 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~INFO~  T2 requested to write x2 as 302  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~DEBUG~  Calling the Data Manager to write x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~INFO~  Write unsuccessful. Blocked by site(s): [1]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~INFO~  end T1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~DEBUG~  Committing transaction: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~INFO~  Commit transaction 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~DEBUG~  Calling Data Managers commit.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~DEBUG~  Releasing Locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~INFO~  Release lock held by T1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~DEBUG~  Calling Data Managers release lock.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~DEBUG~  newly freed data: x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~DEBUG~  Calling retry after releasing locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~INFO~  Retrying transaction: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~DEBUG~  Calling retry after releasing locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:00:09,997~INFO~  Retrying transaction: 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:13,923~DEBUG~  Reading file ./input/input21  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:13,923~DEBUG~  Opening file ./input/input21  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:13,923~INFO~  Current Time: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:13,923~DEBUG~  Detecting deadlock @ tick 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:13,923~INFO~  begin T1 @ tick 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:13,923~INFO~  Current Time: 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:13,923~DEBUG~  Detecting deadlock @ tick 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:13,923~INFO~  begin T2 @ tick 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:13,923~INFO~  Current Time: 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:13,923~DEBUG~  Detecting deadlock @ tick 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:13,923~INFO~  T2 requested to read x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:13,923~DEBUG~  Calling the Data Manager to read x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,228~DEBUG~  Reading file ./input/input21  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,229~DEBUG~  Opening file ./input/input21  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,229~INFO~  Current Time: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,229~DEBUG~  Detecting deadlock @ tick 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,229~INFO~  begin T1 @ tick 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,229~INFO~  Current Time: 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,229~DEBUG~  Detecting deadlock @ tick 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,229~INFO~  begin T2 @ tick 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,229~INFO~  Current Time: 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,229~DEBUG~  Detecting deadlock @ tick 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,229~INFO~  T2 requested to read x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,229~DEBUG~  Calling the Data Manager to read x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,229~INFO~  Current Time: 4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,229~DEBUG~  Detecting deadlock @ tick 4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,229~INFO~  T1 requested to write x2 as 202  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,229~DEBUG~  Calling the Data Manager to write x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,229~INFO~  Write unsuccessful. Blocked by site(s): [2]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~INFO~  Current Time: 5  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~DEBUG~  Detecting deadlock @ tick 5  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~INFO~  T2 requested to write x2 as 302  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~DEBUG~  Calling the Data Manager to write x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~INFO~  Write unsuccessful. Blocked by site(s): [1]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~INFO~  Current Time: 6  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~DEBUG~  Detecting deadlock @ tick 6  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~ERROR~  Deadlock detected.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~INFO~  Youngest transaction found. Aborting transaction 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~INFO~  Abort transaction 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~DEBUG~  Releasing Locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~INFO~  Release lock held by T2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~DEBUG~  Calling Data Managers release lock.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~DEBUG~  newly freed data: x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~DEBUG~  Calling retry after releasing locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~INFO~  Retrying transaction: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~INFO~  Retrying write transaction: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~INFO~  T1 requested to write x2 as 202  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~DEBUG~  Calling the Data Manager to write x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~INFO~  Write successful. Written to site(s): [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~DEBUG~  Calling retry after releasing locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~INFO~  Retrying transaction: 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~INFO~  Retrying write transaction: 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~INFO~  T2 requested to write x2 as 302  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~DEBUG~  Calling the Data Manager to write x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~INFO~  Write unsuccessful. Blocked by site(s): [1]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~INFO~  end T1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~DEBUG~  Committing transaction: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~INFO~  Commit transaction 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~DEBUG~  Calling Data Managers commit.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~DEBUG~  Releasing Locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~INFO~  Release lock held by T1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~DEBUG~  Calling Data Managers release lock.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~DEBUG~  newly freed data: x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~DEBUG~  Calling retry after releasing locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~INFO~  Retrying transaction: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~DEBUG~  Calling retry after releasing locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:01:21,230~INFO~  Retrying transaction: 2  ~module:transaction_manager~function:transaction_manager
