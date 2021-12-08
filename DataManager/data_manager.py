@@ -62,14 +62,14 @@ class DataManager:
                     locked_by = site.lock_table[variable_id].locks
                     if site.get_lock_type(variable_id) == LockType.WRITE:
                         if variable_id in locked_by:
-                            print("Read: ", site.variables.get(variable_id))
+                            print("Read: ", site.variables.get(variable_id).value)
                             return True, [site.site_num]
                         else:
                             print("returned here")
                             return False, locked_by
                     else:
                         site.add_variable_lock(variable_id, trans.ID, LockType.READ)
-                        print("Read: ", site.variables.get(variable_id))
+                        print("Read: ", site.variables.get(variable_id).value)
                         return True, [site.site_num]
 
             return False, [-1]
