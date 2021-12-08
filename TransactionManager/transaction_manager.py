@@ -144,6 +144,7 @@ class TransactionManager:
         print(msg)
         read_only = self.transaction_list.get(transaction_id).read_only
         read_result = self.DM.read(self.transaction_list.get(transaction_id), variable_id)
+        print("read_result: ", read_result)
         if read_result[0]:
             if not read_only:
                 sites_touched = set(read_result[1])

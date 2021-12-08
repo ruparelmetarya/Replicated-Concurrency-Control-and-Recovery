@@ -42,12 +42,14 @@ class DataManager:
     def read(self, trans: Transaction, variable_id) -> (bool, list):
         if trans.read_only:
             if trans.cache and variable_id in trans.cache:
+                print("Read: ",trans.cache[variable_id])
                 return True, []
             elif trans.cache and variable_id not in trans.cache:
                 return False, [-2]
             else:
                 self.generate_cache_for_ro(trans)
                 if variable_id in trans.cache:
+                    print("Read: ",trans.cache[variable_id])
                     return True, []
                 else:
                     trans.cache.clear()
@@ -59,11 +61,13 @@ class DataManager:
                     locked_by = site.lock_table[variable_id].locks
                     if site.get_lock_type(variable_id) == LockType.WRITE:
                         if variable_id in locked_by:
+                            print("Read: ", site.variables.get(variable_id))
                             return True, [site.site_num]
                         else:
                             return False, locked_by
                     else:
                         site.add_variable_lock(variable_id, trans.ID, LockType.READ)
+                        print("Read: ", site.variables.get(variable_id))
                         return True, [site.site_num]
 
             return False, [-1]
@@ -100,51 +104,6 @@ class DataManager:
         else:
             blocked_by = list(blocked_by)
             return False, blocked_by
-
-    # def write(self, transID, ID):
-    #     # in sum, the transaction could get the write lock only when the data is unlocked, or
-    #     # locked by himself
-    #     print('varSite: {}'.format(self.var_sites))
-    #     sites = self.var_sites[ID]
-    #     blockers = set()
-    #     couldWriteLock = True
-    #     runningSite = 0
-    #     siteNums = []
-    #     for site in sites:
-    #         if site.is_running:
-    #             siteNums.append(site.site_num)
-    #             runningSite += 1
-    #             print('site num: ', site.site_num)
-    #             # lockers = site.lockTable[ID].getLocker()
-    #             lockers = site.lock_table.get(ID).locks
-    #             # if write locked:
-    #             if site.get_lock_type(ID) == LockType.WRITE:
-    #                 # writed locked by himself?
-    #                 if ID in lockers:
-    #                     couldWriteLock = True
-    #                 else:
-    #                     return False, lockers
-    #             elif site.get_lock_type(ID) == LockType.READ:
-    #                 # read locked only by himself:
-    #                 if len(lockers) == 1 and lockers[0] == transID:
-    #                     continue
-    #                 else:
-    #                     couldWriteLock = False
-    #                     # blockers could have himself
-    #                     for blockerID in lockers:
-    #                         if blockerID != transID:
-    #                             blockers.add(blockerID)
-    #     if runningSite == 0:
-    #         # no running site, must wait for recovery
-    #         print(transID, 'running site == 0')
-    #         return False, [-1]
-    #     elif couldWriteLock:
-    #         for site in sites:
-    #             if site.is_running:
-    #                 site.add_variable_lock(ID, transID, LockType.WRITE)
-    #         return True, siteNums
-    #     else:
-    #         return False, list(blockers)
 
     def write_val_to_database(self, ID, val):
         sites = self.var_sites[ID]
