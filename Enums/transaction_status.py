@@ -9,7 +9,7 @@ from enum import Enum
 
 class TransactionStatus(Enum):
     """
-    Represents the status of a TransactionManager
+    Represents the status of a Transaction.
     """
     NORMAL = 0
     READ = 1

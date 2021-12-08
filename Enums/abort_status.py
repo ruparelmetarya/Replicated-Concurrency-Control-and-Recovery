@@ -9,7 +9,7 @@ from enum import Enum
 
 class AbortStatus(Enum):
     """
-    Represents the status of a TransactionManager
+    Represents the Abort status of a Transaction.
     """
     FALSE = 0
     TRUE = 1

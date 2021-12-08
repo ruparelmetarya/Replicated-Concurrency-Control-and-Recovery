@@ -8,6 +8,10 @@ from enum import Enum
 
 
 class LockType(Enum):
+    """
+    Represents the type of a Lock.
+    """
+
     FREE = 0
     READ = 1
     WRITE = 2

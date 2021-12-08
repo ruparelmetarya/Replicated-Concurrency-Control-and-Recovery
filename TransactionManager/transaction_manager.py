@@ -18,6 +18,11 @@ LOGGER = Logger.get_logger(__name__)
 
 
 class TransactionManager:
+    """
+    Transaction Manager translates read and write requests on variables to read and write requests on
+    copies using the available copy algorithm.
+    """
+
     def __init__(self):
         self.DM = DataManager()
         self.transaction_list = collections.defaultdict(Transaction)
@@ -30,6 +35,11 @@ class TransactionManager:
 
     @staticmethod
     def read_file(filename):
+        """
+        Open an input file.
+        :param filename: Name of the file
+        :return: List: Lines of the input file.
+        """
         LOGGER.debug("Opening file {filename}".format(filename=filename))
         try:
             infile = open(filename, 'r')
@@ -39,6 +49,12 @@ class TransactionManager:
             raise IOError
 
     def parser(self, filename):
+        """
+        This is the main crux of the Transaction Manager. We read input file line by line here and request
+        read/write on variables based on the input specification.
+        :param filename: Name of the input file
+        :return: None
+        """
         LOGGER.debug("Reading file {filename}".format(filename=filename))
         data = self.read_file(filename=filename)
         line_num = time = 0
@@ -131,9 +147,16 @@ class TransactionManager:
                 error_msg = OPERATION_ERROR_MESSAGE.format(line_num=line, OP='[' + operation_name + ']', n=1)
                 raise ValueError(error_msg)
 
-            self.print_status()
+            # self.print_status()
 
     def begin(self, transaction_id, time, read_only=False):
+        """
+        Begin a given transaction.
+        :param transaction_id: ID of the transaction.
+        :param time: Current time of the system.
+        :param read_only: boolean indicating whether the Transaction is read_only or not.
+        :return: None
+        """
         msg = "begin T" + str(transaction_id)
         if read_only:
             msg += "(read-only)"
@@ -143,12 +166,20 @@ class TransactionManager:
         self.transaction_list[transaction_id] = transaction
 
     def read(self, transaction_id, variable_id, time):
+        """
+        Read the variable for a given transaction. This internally calls Data Managers read.
+        :param transaction_id: ID of the transaction.
+        :param variable_id: ID of the variable.
+        :param time: Current time of the system.
+        :return: None
+        """
         LOGGER.info("T" + str(transaction_id) + " requested to read " + str(variable_id))
         read_only = self.transaction_list.get(transaction_id).read_only
         LOGGER.debug("Calling the Data Manager to read " + str(variable_id))
         read_result = self.DM.read(self.transaction_list.get(transaction_id), variable_id)
-        LOGGER.info("Read successful status: " + read_result[0] + ". Read from site(s): " + read_result[1])
+
         if read_result[0]:
+            LOGGER.info("Read successful. Written to site(s): " + read_result[1].__str__())
             if not read_only:
                 sites_touched = set(read_result[1])
                 self.transaction_list.get(transaction_id).touch_set = sites_touched
@@ -158,6 +189,7 @@ class TransactionManager:
                 if self.transaction_wait_table.get(transaction_id, None) is not None:
                     del self.transaction_wait_table[transaction_id]
         else:
+            LOGGER.info("Write unsuccessful. Blocked by site(s): " + read_result[1].__str__())
             if read_only and read_result[1] == -1:
                 blocker = -1
                 self.transaction_wait_table[transaction_id].add(blocker)
@@ -177,6 +209,13 @@ class TransactionManager:
                 self.transaction_list.get(transaction_id).query_buffer = [variable_id]
 
     def write(self, transaction_id, variable_id, value):
+        """
+        Write the variable for a given transaction. This internally calls Data Managers write.
+        :param transaction_id: ID of the transaction.
+        :param variable_id: ID of the variable.
+        :param value: New value of the variable to be written.
+        :return: None
+        """
         LOGGER.info("T" + str(transaction_id) + " requested to write " + str(variable_id) + " as " + str(value))
         LOGGER.debug("Calling the Data Manager to write " + str(variable_id))
         write_result = self.DM.write(transaction_id, variable_id, self.block_table)
@@ -200,7 +239,13 @@ class TransactionManager:
             self.transaction_list[transaction_id].query_buffer = [variable_id, value]
 
     def fail(self, site_id, time):
-        LOGGER.info("site " + str(site_id) + " failed")
+        """
+        Fail the site corresponding to the given ID. This internally calls Data Managers Fail.
+        :param site_id: ID of the site.
+        :param time: Current time of the system.
+        :return: None
+        """
+        LOGGER.info("site " + str(site_id) + " failing")
         LOGGER.debug("Calling Data Manager to fail site " + str(site_id))
         self.DM.fail(site_id)
         self.fail_history[site_id].append(time)
@@ -209,11 +254,22 @@ class TransactionManager:
                 self.transaction_list.get(transaction_id).abort = AbortStatus.TRUE
 
     def recover(self, site_id):
-        msg = "recover site " + str(site_id)
-        print(msg)
+        """
+        Recover the site corresponding to the given ID. This internally calls Data Managers Recover.
+        :param site_id: ID of the site.
+        :return: None
+        """
+        LOGGER.info("site " + str(site_id) + " recovering")
+        LOGGER.debug("Calling Data Manager to fail site " + str(site_id))
         self.DM.recover(site_id)
 
     def end(self, transaction_id, time):
+        """
+        End the transaction. This internally calls Data Managers end.
+        :param transaction_id: ID of the transaction.
+        :param time: Current time of the system.
+        :return: None
+        """
         LOGGER.info("end T" + str(transaction_id))
         trans = self.transaction_list.get(transaction_id)
         sites_touched = trans.touch_set
@@ -227,6 +283,12 @@ class TransactionManager:
             self.commit(transaction_id, time)
 
     def dump(self, site=None, variable=None):
+        """
+        Take a snapshot of the Sites and print to stdout.
+        :param site: Site to be printed (optional)
+        :param variable: Variable to be printed (optional)
+        :return: None
+        """
         if site is None and variable is None:
             LOGGER.info("dump all data")
         elif site is None:
@@ -238,6 +300,11 @@ class TransactionManager:
         self.DM.dump(site, variable)
 
     def deadlock_detection(self, time):
+        """
+        Detect deadlock in the system. If found, abort the youngest transaction.
+        :param time: Current time of the system.
+        :return: None
+        """
         LOGGER.debug("Detecting deadlock @ tick " + str(time))
         visited = collections.defaultdict(int)
         for t in self.transaction_list:
@@ -279,6 +346,10 @@ class TransactionManager:
                         stack.pop()
 
     def print_status(self):
+        """
+        Print Status of a transaction.
+        :return: None
+        """
         print("transaction_wait_table : ", self.transaction_wait_table.__str__())
         print("block_table            : ", self.block_table.__str__())
         print("data_wait_table        : ", self.data_wait_table.__str__())
@@ -286,6 +357,12 @@ class TransactionManager:
             print(self.transaction_list[t_id].ID)
 
     def abort(self, transaction_id, time):
+        """
+        Abort a given transaction. This internally calls Data Managers Abort.
+        :param transaction_id: ID of the transaction.
+        :param time: Current time of the system.
+        :return: None.
+        """
         LOGGER.info("Abort transaction " + str(transaction_id))
         LOGGER.debug("Releasing Locks.")
         self.release_locks(transaction_id, time)
@@ -301,6 +378,12 @@ class TransactionManager:
         self.final_result[transaction_id] = "abort"
 
     def commit(self, transaction_id, time):
+        """
+        Commit a given transaction. This internally calls Data Managers Commit.
+        :param transaction_id: ID of the transaction.
+        :param time: Current time of the system.
+        :return: None.
+        """
         LOGGER.info("Commit transaction " + str(transaction_id))
         trans = self.transaction_list[transaction_id]
         LOGGER.debug("Calling Data Managers commit.")
@@ -317,21 +400,28 @@ class TransactionManager:
         self.final_result[transaction_id] = "commit"
 
     def release_locks(self, transaction_id, time):
+        """
+        Release locks held by a transaction. This is usually used after abort/commit.
+        This internally calls Data Managers release_locks.
+        :param transaction_id: ID of the transaction.
+        :param time: Current time of the system.
+        :return: None.
+        """
         LOGGER.info("Release lock held by T" + str(transaction_id))
         locks = self.transaction_list[transaction_id].lock_list
         LOGGER.debug("Calling Data Managers release lock.")
-        free_data = self.DM.release_locks(transaction_id, locks)
+        free_datas = self.DM.release_locks(transaction_id, locks)
         msg = "newly freed data:"
-        for fd in free_data:
+        for fd in free_datas:
             msg += " " + str(fd)
         LOGGER.debug(msg)
         retry_list = []
-        for free_data in free_data:
+        for free_data in free_datas:
             if free_data in self.data_wait_table:
                 for tid in self.data_wait_table[free_data]:
                     if tid not in retry_list:
                         retry_list.append(tid)
-        for free_data in free_data:
+        for free_data in free_datas:
             if free_data in self.data_wait_table:
                 del self.data_wait_table[free_data]
         for tid in retry_list:
@@ -339,6 +429,12 @@ class TransactionManager:
             self.retry(tid, time)
 
     def retry(self, transaction_id, time):
+        """
+        Retry a transaction.
+        :param transaction_id: ID of the transaction.
+        :param time: Current time of the system.
+        :return: None.
+        """
         LOGGER.info("Retrying transaction: " + str(transaction_id))
         trans = self.transaction_list[transaction_id]
         if self.transaction_list[transaction_id].status == TransactionStatus.READ:
@@ -349,6 +445,10 @@ class TransactionManager:
             self.write(transaction_id, trans.query_buffer[0], trans.query_buffer[1])
 
     def print_final_status(self):
+        """
+        Print summary after processing the input file.
+        :return: None.
+        """
         print("\n[summary]")
         for transaction_id in self.final_result:
             print("T" + str(transaction_id) + " :", self.final_result[transaction_id])
