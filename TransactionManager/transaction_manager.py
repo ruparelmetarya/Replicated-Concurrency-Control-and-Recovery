@@ -85,6 +85,7 @@ class TransactionManager:
                 self.write(transaction_id, variable_id, value)
 
             elif operation_name == "dump":
+                print("operation_arg: ", operation_arg)
                 if len(operation_arg) != 1:
                     errmsg = "error: operation [dump] requires no more than 1 argument, " + str(len(operation_arg))
                     errmsg += " provided in line " + str(line_num)
@@ -179,6 +180,7 @@ class TransactionManager:
         msg = "T" + str(transaction_id) + " attempt to write " + str(variable_id) + " as " + str(value)
         print(msg)
         write_result = self.DM.write(transaction_id, variable_id)
+        print("write_result: ", write_result)
         if write_result[0]:
             sites_touched = set(write_result[1])
             self.transaction_list.get(transaction_id).touch_set = sites_touched
@@ -250,8 +252,8 @@ class TransactionManager:
         print(msg)
         # 0: not visited    1: visiting     2:finished
         visited = collections.defaultdict(int)
-        # for t in self.transaction_list:
-        #     visited[t] = 0
+        for t in self.transaction_list:
+            visited[t] = 0
         for t in visited:
             if not visited.get(t):
                 stack = [t]
@@ -308,7 +310,7 @@ class TransactionManager:
         print("block_table            : ", self.block_table.__str__())
         print("data_wait_table        : ", self.data_wait_table.__str__())
         for t_id in self.transaction_list:
-            print(self.transaction_list[t_id])
+            print(self.transaction_list[t_id].ID)
 
     def abort(self, transaction_id, time):
         msg = "abort transaction " + str(transaction_id)
