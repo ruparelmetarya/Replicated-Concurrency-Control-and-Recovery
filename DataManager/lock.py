@@ -31,7 +31,7 @@ class Lock:
             error_msg = "Lock should be of type Enum LockType (FREE/READ/WRITE)."
             LOGGER.error(error_msg)
             raise TypeError(error_msg)
-        LOGGER.debug("Adding lock " + str(lock) + " to transaction " + transaction_id)
+        LOGGER.debug("Adding lock " + str(lock) + " to transaction " + str(transaction_id))
         self._lock_dict[transaction_id] = lock
         LOGGER.debug("Updating lock type to " + str(lock))
         self._type = lock
@@ -42,7 +42,7 @@ class Lock:
         :param transaction_id: ID of the transaction.
         :return: None
         """
-        LOGGER.debug("Removing lock from transaction " + transaction_id)
+        LOGGER.debug("Removing lock from transaction " + str(transaction_id))
         if self._lock_dict.get(transaction_id, None) is not None:
             self._lock_dict.pop(transaction_id)
         LOGGER.debug("Updated lock type to " + str(LockType.FREE))

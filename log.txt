@@ -1,204 +1,1282 @@
-2021-12-08 03:52:05,671~DEBUG~  Reading file ./input/input1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,671~DEBUG~  Opening file ./input/input1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,671~INFO~  Current Time: 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,671~DEBUG~  Detecting deadlock @ tick 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~INFO~  begin T1 @ tick 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~INFO~  Current Time: 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~DEBUG~  Detecting deadlock @ tick 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~INFO~  begin T2 @ tick 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~INFO~  Current Time: 3  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~DEBUG~  Detecting deadlock @ tick 3  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~INFO~  T1 requested to write x1 as 101  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~DEBUG~  Calling the Data Manager to write x1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~INFO~  Write successful. Written to site(s): [2]  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~INFO~  Current Time: 4  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~DEBUG~  Detecting deadlock @ tick 4  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~INFO~  T2 requested to write x2 as 202  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~DEBUG~  Calling the Data Manager to write x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~INFO~  Write successful. Written to site(s): [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~INFO~  Current Time: 5  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~DEBUG~  Detecting deadlock @ tick 5  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~INFO~  T1 requested to write x2 as 102  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~DEBUG~  Calling the Data Manager to write x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~INFO~  Write unsuccessful. Blocked by site(s): [2]  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~INFO~  Current Time: 6  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~DEBUG~  Detecting deadlock @ tick 6  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~INFO~  T2 requested to write x1 as 201  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~DEBUG~  Calling the Data Manager to write x1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~INFO~  Write unsuccessful. Blocked by site(s): [1]  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~INFO~  Current Time: 7  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~DEBUG~  Detecting deadlock @ tick 7  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~ERROR~  Deadlock detected.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~INFO~  Youngest transaction found. Aborting transaction 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~INFO~  Abort transaction 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~DEBUG~  Releasing Locks.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~INFO~  Release lock held by T2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~DEBUG~  Calling Data Managers release lock.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~DEBUG~  newly freed data: x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~DEBUG~  Calling retry after releasing locks.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~INFO~  Retrying transaction: 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,672~INFO~  Retrying write transaction: 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,673~INFO~  T1 requested to write x2 as 102  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,673~DEBUG~  Calling the Data Manager to write x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,673~INFO~  Write successful. Written to site(s): [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,673~INFO~  end T1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,673~DEBUG~  Committing transaction: 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,673~INFO~  Commit transaction 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,673~DEBUG~  Calling Data Managers commit.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,673~DEBUG~  Releasing Locks.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,673~INFO~  Release lock held by T1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,673~DEBUG~  Calling Data Managers release lock.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,673~DEBUG~  newly freed data: x2 x1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,673~DEBUG~  Calling retry after releasing locks.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,673~INFO~  Retrying transaction: 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,673~INFO~  Current Time: 8  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,673~DEBUG~  Detecting deadlock @ tick 8  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,673~INFO~  dump all data  ~module:transaction_manager~function:transaction_manager
-2021-12-08 03:52:05,673~DEBUG~  Calling Data Managers dump().  ~module:transaction_manager~function:transaction_manager
-2021-12-08 04:58:56,623~DEBUG~  Reading file ./input/input21  ~module:transaction_manager~function:transaction_manager
-2021-12-08 04:58:56,624~DEBUG~  Opening file ./input/input21  ~module:transaction_manager~function:transaction_manager
-2021-12-08 04:58:56,624~INFO~  Current Time: 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 04:58:56,624~DEBUG~  Detecting deadlock @ tick 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 04:58:56,624~INFO~  begin T1 @ tick 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 04:58:56,624~INFO~  Current Time: 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 04:58:56,624~DEBUG~  Detecting deadlock @ tick 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 04:58:56,624~INFO~  begin T2 @ tick 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 04:58:56,624~INFO~  Current Time: 3  ~module:transaction_manager~function:transaction_manager
-2021-12-08 04:58:56,624~DEBUG~  Detecting deadlock @ tick 3  ~module:transaction_manager~function:transaction_manager
-2021-12-08 04:58:56,624~INFO~  T2 requested to read x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 04:58:56,624~DEBUG~  Calling the Data Manager to read x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 04:59:57,252~DEBUG~  Reading file ./input/input21  ~module:transaction_manager~function:transaction_manager
-2021-12-08 04:59:57,252~DEBUG~  Opening file ./input/input21  ~module:transaction_manager~function:transaction_manager
-2021-12-08 04:59:57,253~INFO~  Current Time: 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 04:59:57,253~DEBUG~  Detecting deadlock @ tick 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 04:59:57,253~INFO~  begin T1 @ tick 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 04:59:57,253~INFO~  Current Time: 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 04:59:57,253~DEBUG~  Detecting deadlock @ tick 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 04:59:57,253~INFO~  begin T2 @ tick 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 04:59:57,253~INFO~  Current Time: 3  ~module:transaction_manager~function:transaction_manager
-2021-12-08 04:59:57,253~DEBUG~  Detecting deadlock @ tick 3  ~module:transaction_manager~function:transaction_manager
-2021-12-08 04:59:57,253~INFO~  T2 requested to read x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 04:59:57,253~DEBUG~  Calling the Data Manager to read x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,995~DEBUG~  Reading file ./input/input21  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,995~DEBUG~  Opening file ./input/input21  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~INFO~  Current Time: 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~DEBUG~  Detecting deadlock @ tick 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~INFO~  begin T1 @ tick 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~INFO~  Current Time: 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~DEBUG~  Detecting deadlock @ tick 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~INFO~  begin T2 @ tick 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~INFO~  Current Time: 3  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~DEBUG~  Detecting deadlock @ tick 3  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~INFO~  T2 requested to read x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~DEBUG~  Calling the Data Manager to read x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~INFO~  Read successful. Read site(s): [1]  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~INFO~  Current Time: 4  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~DEBUG~  Detecting deadlock @ tick 4  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~INFO~  T1 requested to write x2 as 202  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~DEBUG~  Calling the Data Manager to write x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~INFO~  Write unsuccessful. Blocked by site(s): [2]  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~INFO~  Current Time: 5  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~DEBUG~  Detecting deadlock @ tick 5  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~INFO~  T2 requested to write x2 as 302  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~DEBUG~  Calling the Data Manager to write x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~INFO~  Write unsuccessful. Blocked by site(s): [1]  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~INFO~  Current Time: 6  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~DEBUG~  Detecting deadlock @ tick 6  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~ERROR~  Deadlock detected.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~INFO~  Youngest transaction found. Aborting transaction 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,996~INFO~  Abort transaction 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~DEBUG~  Releasing Locks.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~INFO~  Release lock held by T2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~DEBUG~  Calling Data Managers release lock.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~DEBUG~  newly freed data: x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~DEBUG~  Calling retry after releasing locks.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~INFO~  Retrying transaction: 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~INFO~  Retrying write transaction: 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~INFO~  T1 requested to write x2 as 202  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~DEBUG~  Calling the Data Manager to write x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~INFO~  Write successful. Written to site(s): [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~DEBUG~  Calling retry after releasing locks.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~INFO~  Retrying transaction: 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~INFO~  Retrying write transaction: 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~INFO~  T2 requested to write x2 as 302  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~DEBUG~  Calling the Data Manager to write x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~INFO~  Write unsuccessful. Blocked by site(s): [1]  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~INFO~  end T1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~DEBUG~  Committing transaction: 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~INFO~  Commit transaction 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~DEBUG~  Calling Data Managers commit.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~DEBUG~  Releasing Locks.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~INFO~  Release lock held by T1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~DEBUG~  Calling Data Managers release lock.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~DEBUG~  newly freed data: x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~DEBUG~  Calling retry after releasing locks.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~INFO~  Retrying transaction: 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~DEBUG~  Calling retry after releasing locks.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:00:09,997~INFO~  Retrying transaction: 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:13,923~DEBUG~  Reading file ./input/input21  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:13,923~DEBUG~  Opening file ./input/input21  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:13,923~INFO~  Current Time: 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:13,923~DEBUG~  Detecting deadlock @ tick 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:13,923~INFO~  begin T1 @ tick 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:13,923~INFO~  Current Time: 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:13,923~DEBUG~  Detecting deadlock @ tick 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:13,923~INFO~  begin T2 @ tick 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:13,923~INFO~  Current Time: 3  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:13,923~DEBUG~  Detecting deadlock @ tick 3  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:13,923~INFO~  T2 requested to read x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:13,923~DEBUG~  Calling the Data Manager to read x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,228~DEBUG~  Reading file ./input/input21  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,229~DEBUG~  Opening file ./input/input21  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,229~INFO~  Current Time: 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,229~DEBUG~  Detecting deadlock @ tick 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,229~INFO~  begin T1 @ tick 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,229~INFO~  Current Time: 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,229~DEBUG~  Detecting deadlock @ tick 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,229~INFO~  begin T2 @ tick 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,229~INFO~  Current Time: 3  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,229~DEBUG~  Detecting deadlock @ tick 3  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,229~INFO~  T2 requested to read x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,229~DEBUG~  Calling the Data Manager to read x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,229~INFO~  Current Time: 4  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,229~DEBUG~  Detecting deadlock @ tick 4  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,229~INFO~  T1 requested to write x2 as 202  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,229~DEBUG~  Calling the Data Manager to write x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,229~INFO~  Write unsuccessful. Blocked by site(s): [2]  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~INFO~  Current Time: 5  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~DEBUG~  Detecting deadlock @ tick 5  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~INFO~  T2 requested to write x2 as 302  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~DEBUG~  Calling the Data Manager to write x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~INFO~  Write unsuccessful. Blocked by site(s): [1]  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~INFO~  Current Time: 6  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~DEBUG~  Detecting deadlock @ tick 6  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~ERROR~  Deadlock detected.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~INFO~  Youngest transaction found. Aborting transaction 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~INFO~  Abort transaction 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~DEBUG~  Releasing Locks.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~INFO~  Release lock held by T2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~DEBUG~  Calling Data Managers release lock.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~DEBUG~  newly freed data: x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~DEBUG~  Calling retry after releasing locks.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~INFO~  Retrying transaction: 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~INFO~  Retrying write transaction: 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~INFO~  T1 requested to write x2 as 202  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~DEBUG~  Calling the Data Manager to write x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~INFO~  Write successful. Written to site(s): [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~DEBUG~  Calling retry after releasing locks.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~INFO~  Retrying transaction: 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~INFO~  Retrying write transaction: 2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~INFO~  T2 requested to write x2 as 302  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~DEBUG~  Calling the Data Manager to write x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~INFO~  Write unsuccessful. Blocked by site(s): [1]  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~INFO~  end T1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~DEBUG~  Committing transaction: 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~INFO~  Commit transaction 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~DEBUG~  Calling Data Managers commit.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~DEBUG~  Releasing Locks.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~INFO~  Release lock held by T1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~DEBUG~  Calling Data Managers release lock.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~DEBUG~  newly freed data: x2  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~DEBUG~  Calling retry after releasing locks.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~INFO~  Retrying transaction: 1  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~DEBUG~  Calling retry after releasing locks.  ~module:transaction_manager~function:transaction_manager
-2021-12-08 05:01:21,230~INFO~  Retrying transaction: 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,214~INFO~  Initialized Sites  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,216~INFO~  Initialized variable on respective sites  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,216~DEBUG~  Reading file ./input/input16  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,216~DEBUG~  Opening file ./input/input16  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,216~INFO~  Current Time: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,216~DEBUG~  Detecting deadlock @ tick 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,216~INFO~  begin T3 @ tick 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,216~INFO~  Current Time: 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,216~DEBUG~  Detecting deadlock @ tick 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,216~INFO~  begin T1 @ tick 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,216~INFO~  Current Time: 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,216~DEBUG~  Detecting deadlock @ tick 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,216~INFO~  begin T2 @ tick 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,216~INFO~  Current Time: 4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,216~DEBUG~  Detecting deadlock @ tick 4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,216~INFO~  T3 requested to write x2 as 22  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,216~DEBUG~  Calling the Data Manager to write x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,216~DEBUG~  Acquiring lock LockType.WRITEon variable x2  ~module:site~function:site
+2021-12-08 05:19:34,216~DEBUG~  Adding lock LockType.WRITE to transaction 3  ~module:lock~function:lock
+2021-12-08 05:19:34,217~DEBUG~  Updating lock type to LockType.WRITE  ~module:lock~function:lock
+2021-12-08 05:19:34,217~DEBUG~  Write locked on x2 by 3  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,217~INFO~  Write successful. Written to site(s): [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,217~INFO~  Current Time: 5  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,217~DEBUG~  Detecting deadlock @ tick 5  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,217~INFO~  T2 requested to write x4 as 44  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,217~DEBUG~  Calling the Data Manager to write x4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,217~DEBUG~  Acquiring lock LockType.WRITEon variable x4  ~module:site~function:site
+2021-12-08 05:19:34,217~DEBUG~  Adding lock LockType.WRITE to transaction 2  ~module:lock~function:lock
+2021-12-08 05:19:34,217~DEBUG~  Updating lock type to LockType.WRITE  ~module:lock~function:lock
+2021-12-08 05:19:34,217~DEBUG~  Write locked on x4 by 2  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,217~INFO~  Write successful. Written to site(s): [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,217~INFO~  Current Time: 6  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,217~DEBUG~  Detecting deadlock @ tick 6  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,217~INFO~  T3 requested to read x4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,217~DEBUG~  Calling the Data Manager to read x4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,217~DEBUG~  Couldn't acquire read lock  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,217~INFO~  Write unsuccessful. Blocked by site(s): [2]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,217~INFO~  Current Time: 7  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,217~DEBUG~  Detecting deadlock @ tick 7  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,217~INFO~  end T2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,217~DEBUG~  Committing transaction: 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,217~INFO~  Commit transaction 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,217~DEBUG~  Calling Data Managers commit.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,217~DEBUG~  Writing value 44to variable x4  ~module:site~function:site
+2021-12-08 05:19:34,217~INFO~  Variable: x4 = 44 written in 1  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,217~DEBUG~  Writing value 44to variable x4  ~module:site~function:site
+2021-12-08 05:19:34,217~INFO~  Variable: x4 = 44 written in 2  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,217~DEBUG~  Writing value 44to variable x4  ~module:site~function:site
+2021-12-08 05:19:34,217~INFO~  Variable: x4 = 44 written in 3  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,217~DEBUG~  Writing value 44to variable x4  ~module:site~function:site
+2021-12-08 05:19:34,217~INFO~  Variable: x4 = 44 written in 4  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,217~DEBUG~  Writing value 44to variable x4  ~module:site~function:site
+2021-12-08 05:19:34,217~INFO~  Variable: x4 = 44 written in 5  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,217~DEBUG~  Writing value 44to variable x4  ~module:site~function:site
+2021-12-08 05:19:34,217~INFO~  Variable: x4 = 44 written in 6  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,217~DEBUG~  Writing value 44to variable x4  ~module:site~function:site
+2021-12-08 05:19:34,217~INFO~  Variable: x4 = 44 written in 7  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,217~DEBUG~  Writing value 44to variable x4  ~module:site~function:site
+2021-12-08 05:19:34,217~INFO~  Variable: x4 = 44 written in 8  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,217~DEBUG~  Writing value 44to variable x4  ~module:site~function:site
+2021-12-08 05:19:34,217~INFO~  Variable: x4 = 44 written in 9  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,217~DEBUG~  Writing value 44to variable x4  ~module:site~function:site
+2021-12-08 05:19:34,217~INFO~  Variable: x4 = 44 written in 10  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,217~DEBUG~  Write to DB successful.  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,217~DEBUG~  Releasing Locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,217~INFO~  Release lock held by T2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,217~DEBUG~  Calling Data Managers release lock.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,217~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:19:34,217~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:19:34,217~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,217~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:19:34,217~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:19:34,217~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,218~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:19:34,218~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:19:34,218~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,218~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:19:34,218~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:19:34,218~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,218~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:19:34,218~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:19:34,218~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,218~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:19:34,218~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:19:34,218~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,218~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:19:34,218~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:19:34,218~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,218~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:19:34,218~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:19:34,218~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,218~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:19:34,218~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:19:34,218~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,218~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:19:34,218~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:19:34,218~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,218~DEBUG~  x4 is freed  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,218~DEBUG~  newly freed data: x4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,218~DEBUG~  Calling retry after releasing locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,218~INFO~  Retrying transaction: 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,218~INFO~  Retrying read transaction: 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,218~INFO~  T3 requested to read x4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,218~DEBUG~  Calling the Data Manager to read x4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,218~DEBUG~  Acquiring lock LockType.READon variable x4  ~module:site~function:site
+2021-12-08 05:19:34,218~DEBUG~  Adding lock LockType.READ to transaction 3  ~module:lock~function:lock
+2021-12-08 05:19:34,218~DEBUG~  Updating lock type to LockType.READ  ~module:lock~function:lock
+2021-12-08 05:19:34,218~INFO~  Transaction ID: 3 read x4 : 44  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,218~INFO~  Read successful. Written to site(s): [1]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,218~INFO~  Current Time: 8  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,218~DEBUG~  Detecting deadlock @ tick 8  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,218~INFO~  end T3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,218~DEBUG~  Committing transaction: 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,218~INFO~  Commit transaction 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,218~DEBUG~  Calling Data Managers commit.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,218~DEBUG~  Writing value 22to variable x2  ~module:site~function:site
+2021-12-08 05:19:34,218~INFO~  Variable: x2 = 22 written in 1  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,218~DEBUG~  Writing value 22to variable x2  ~module:site~function:site
+2021-12-08 05:19:34,218~INFO~  Variable: x2 = 22 written in 2  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,218~DEBUG~  Writing value 22to variable x2  ~module:site~function:site
+2021-12-08 05:19:34,218~INFO~  Variable: x2 = 22 written in 3  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,218~DEBUG~  Writing value 22to variable x2  ~module:site~function:site
+2021-12-08 05:19:34,218~INFO~  Variable: x2 = 22 written in 4  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,218~DEBUG~  Writing value 22to variable x2  ~module:site~function:site
+2021-12-08 05:19:34,218~INFO~  Variable: x2 = 22 written in 5  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,218~DEBUG~  Writing value 22to variable x2  ~module:site~function:site
+2021-12-08 05:19:34,218~INFO~  Variable: x2 = 22 written in 6  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,218~DEBUG~  Writing value 22to variable x2  ~module:site~function:site
+2021-12-08 05:19:34,218~INFO~  Variable: x2 = 22 written in 7  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,219~DEBUG~  Writing value 22to variable x2  ~module:site~function:site
+2021-12-08 05:19:34,219~INFO~  Variable: x2 = 22 written in 8  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,219~DEBUG~  Writing value 22to variable x2  ~module:site~function:site
+2021-12-08 05:19:34,219~INFO~  Variable: x2 = 22 written in 9  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,219~DEBUG~  Writing value 22to variable x2  ~module:site~function:site
+2021-12-08 05:19:34,219~INFO~  Variable: x2 = 22 written in 10  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,219~DEBUG~  Write to DB successful.  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,219~DEBUG~  Releasing Locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,219~INFO~  Release lock held by T3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,219~DEBUG~  Calling Data Managers release lock.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from transaction 3  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from transaction 3  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from transaction 3  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from transaction 3  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from transaction 3  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from transaction 3  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from transaction 3  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from transaction 3  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from transaction 3  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from transaction 3  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  x2 is freed  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from transaction 3  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from transaction 3  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from transaction 3  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from transaction 3  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from transaction 3  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:19:34,219~DEBUG~  Removing lock from transaction 3  ~module:lock~function:lock
+2021-12-08 05:19:34,220~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,220~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:19:34,220~DEBUG~  Removing lock from transaction 3  ~module:lock~function:lock
+2021-12-08 05:19:34,220~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,220~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:19:34,220~DEBUG~  Removing lock from transaction 3  ~module:lock~function:lock
+2021-12-08 05:19:34,220~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,220~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:19:34,220~DEBUG~  Removing lock from transaction 3  ~module:lock~function:lock
+2021-12-08 05:19:34,220~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,220~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:19:34,220~DEBUG~  Removing lock from transaction 3  ~module:lock~function:lock
+2021-12-08 05:19:34,220~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,220~DEBUG~  x4 is freed  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,220~DEBUG~  newly freed data: x4 x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,220~INFO~  Current Time: 9  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,220~DEBUG~  Detecting deadlock @ tick 9  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,220~INFO~  T1 requested to read x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,220~DEBUG~  Calling the Data Manager to read x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,220~DEBUG~  Acquiring lock LockType.READon variable x2  ~module:site~function:site
+2021-12-08 05:19:34,220~DEBUG~  Adding lock LockType.READ to transaction 1  ~module:lock~function:lock
+2021-12-08 05:19:34,220~DEBUG~  Updating lock type to LockType.READ  ~module:lock~function:lock
+2021-12-08 05:19:34,220~INFO~  Transaction ID: 1 read x2 : 22  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,220~INFO~  Read successful. Written to site(s): [1]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,220~INFO~  Current Time: 10  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,220~DEBUG~  Detecting deadlock @ tick 10  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,220~INFO~  end T1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,220~DEBUG~  Committing transaction: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,220~INFO~  Commit transaction 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,220~DEBUG~  Calling Data Managers commit.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,220~DEBUG~  Releasing Locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,220~INFO~  Release lock held by T1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,220~DEBUG~  Calling Data Managers release lock.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,220~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:19:34,220~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:19:34,220~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,220~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:19:34,220~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:19:34,220~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,220~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:19:34,220~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:19:34,220~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,220~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:19:34,220~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:19:34,220~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,220~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:19:34,220~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:19:34,220~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,220~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:19:34,220~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:19:34,220~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,220~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:19:34,220~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:19:34,220~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,220~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:19:34,220~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:19:34,221~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,221~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:19:34,221~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:19:34,221~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,221~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:19:34,221~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:19:34,221~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:19:34,221~DEBUG~  x2 is freed  ~module:data_manager~function:data_manager
+2021-12-08 05:19:34,221~DEBUG~  newly freed data: x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,221~INFO~  Current Time: 11  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,221~DEBUG~  Detecting deadlock @ tick 11  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,221~INFO~  dump all data  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:19:34,221~DEBUG~  Calling Data Managers dump().  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,952~INFO~  Initialized Sites  ~module:data_manager~function:data_manager
+2021-12-08 05:20:21,953~INFO~  Initialized variable on respective sites  ~module:data_manager~function:data_manager
+2021-12-08 05:20:21,953~DEBUG~  Reading file ./input/input4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,953~DEBUG~  Opening file ./input/input4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,953~INFO~  Current Time: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,953~DEBUG~  Detecting deadlock @ tick 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,953~INFO~  begin T1 @ tick 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,953~INFO~  Current Time: 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,953~DEBUG~  Detecting deadlock @ tick 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,953~INFO~  begin T2 @ tick 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,953~INFO~  Current Time: 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,953~DEBUG~  Detecting deadlock @ tick 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,953~INFO~  T1 requested to read x1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,953~DEBUG~  Calling the Data Manager to read x1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,953~DEBUG~  Acquiring lock LockType.READon variable x1  ~module:site~function:site
+2021-12-08 05:20:21,953~DEBUG~  Adding lock LockType.READ to transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:21,953~DEBUG~  Updating lock type to LockType.READ  ~module:lock~function:lock
+2021-12-08 05:20:21,953~INFO~  Transaction ID: 1 read x1 : 10  ~module:data_manager~function:data_manager
+2021-12-08 05:20:21,953~INFO~  Read successful. Written to site(s): [2]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,953~INFO~  Current Time: 4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,953~DEBUG~  Detecting deadlock @ tick 4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,953~INFO~  site 2 failing  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,953~DEBUG~  Calling Data Manager to fail site 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,953~INFO~  Failed site: 2  ~module:data_manager~function:data_manager
+2021-12-08 05:20:21,953~DEBUG~  Failing site 2  ~module:site~function:site
+2021-12-08 05:20:21,953~INFO~  Current Time: 5  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,953~DEBUG~  Detecting deadlock @ tick 5  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,953~INFO~  T2 requested to write x8 as 88  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,953~DEBUG~  Calling the Data Manager to write x8  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,954~DEBUG~  Acquiring lock LockType.WRITEon variable x8  ~module:site~function:site
+2021-12-08 05:20:21,954~DEBUG~  Adding lock LockType.WRITE to transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:21,954~DEBUG~  Updating lock type to LockType.WRITE  ~module:lock~function:lock
+2021-12-08 05:20:21,954~DEBUG~  Write locked on x8 by 2  ~module:data_manager~function:data_manager
+2021-12-08 05:20:21,954~INFO~  Write successful. Written to site(s): [1, 3, 4, 5, 6, 7, 8, 9, 10]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,954~INFO~  Current Time: 6  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,954~DEBUG~  Detecting deadlock @ tick 6  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,954~INFO~  T2 requested to read x3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,954~DEBUG~  Calling the Data Manager to read x3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,954~DEBUG~  Acquiring lock LockType.READon variable x3  ~module:site~function:site
+2021-12-08 05:20:21,954~DEBUG~  Adding lock LockType.READ to transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:21,954~DEBUG~  Updating lock type to LockType.READ  ~module:lock~function:lock
+2021-12-08 05:20:21,954~INFO~  Transaction ID: 2 read x3 : 30  ~module:data_manager~function:data_manager
+2021-12-08 05:20:21,954~INFO~  Read successful. Written to site(s): [4]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,954~INFO~  Current Time: 7  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,954~DEBUG~  Detecting deadlock @ tick 7  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,954~INFO~  T1 requested to read x5  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,954~DEBUG~  Calling the Data Manager to read x5  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,954~DEBUG~  Acquiring lock LockType.READon variable x5  ~module:site~function:site
+2021-12-08 05:20:21,954~DEBUG~  Adding lock LockType.READ to transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:21,954~DEBUG~  Updating lock type to LockType.READ  ~module:lock~function:lock
+2021-12-08 05:20:21,954~INFO~  Transaction ID: 1 read x5 : 50  ~module:data_manager~function:data_manager
+2021-12-08 05:20:21,954~INFO~  Read successful. Written to site(s): [6]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,954~INFO~  Current Time: 8  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,954~DEBUG~  Detecting deadlock @ tick 8  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,954~INFO~  end T2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,954~DEBUG~  Committing transaction: 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,954~INFO~  Commit transaction 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,954~DEBUG~  Calling Data Managers commit.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,954~DEBUG~  Writing value 88to variable x8  ~module:site~function:site
+2021-12-08 05:20:21,954~INFO~  Variable: x8 = 88 written in 1  ~module:data_manager~function:data_manager
+2021-12-08 05:20:21,954~DEBUG~  Writing value 88to variable x8  ~module:site~function:site
+2021-12-08 05:20:21,954~INFO~  Variable: x8 = 88 written in 3  ~module:data_manager~function:data_manager
+2021-12-08 05:20:21,954~DEBUG~  Writing value 88to variable x8  ~module:site~function:site
+2021-12-08 05:20:21,954~INFO~  Variable: x8 = 88 written in 4  ~module:data_manager~function:data_manager
+2021-12-08 05:20:21,954~DEBUG~  Writing value 88to variable x8  ~module:site~function:site
+2021-12-08 05:20:21,954~INFO~  Variable: x8 = 88 written in 5  ~module:data_manager~function:data_manager
+2021-12-08 05:20:21,954~DEBUG~  Writing value 88to variable x8  ~module:site~function:site
+2021-12-08 05:20:21,954~INFO~  Variable: x8 = 88 written in 6  ~module:data_manager~function:data_manager
+2021-12-08 05:20:21,954~DEBUG~  Writing value 88to variable x8  ~module:site~function:site
+2021-12-08 05:20:21,954~INFO~  Variable: x8 = 88 written in 7  ~module:data_manager~function:data_manager
+2021-12-08 05:20:21,954~DEBUG~  Writing value 88to variable x8  ~module:site~function:site
+2021-12-08 05:20:21,954~INFO~  Variable: x8 = 88 written in 8  ~module:data_manager~function:data_manager
+2021-12-08 05:20:21,954~DEBUG~  Writing value 88to variable x8  ~module:site~function:site
+2021-12-08 05:20:21,954~INFO~  Variable: x8 = 88 written in 9  ~module:data_manager~function:data_manager
+2021-12-08 05:20:21,954~DEBUG~  Writing value 88to variable x8  ~module:site~function:site
+2021-12-08 05:20:21,954~INFO~  Variable: x8 = 88 written in 10  ~module:data_manager~function:data_manager
+2021-12-08 05:20:21,954~DEBUG~  Write to DB successful.  ~module:data_manager~function:data_manager
+2021-12-08 05:20:21,954~DEBUG~  Releasing Locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,954~INFO~  Release lock held by T2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,954~DEBUG~  Calling Data Managers release lock.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,954~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:21,954~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:21,954~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:21,954~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:21,955~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:21,955~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:21,955~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:21,955~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:21,955~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:21,955~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:21,955~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:21,955~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:21,955~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:21,955~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:21,955~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:21,955~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:21,955~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:21,955~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:21,955~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:21,955~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:21,955~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:21,955~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:21,955~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:21,955~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:21,955~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:21,955~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:21,955~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:21,955~DEBUG~  x8 is freed  ~module:data_manager~function:data_manager
+2021-12-08 05:20:21,955~DEBUG~  Removing lock from the variable x3  ~module:site~function:site
+2021-12-08 05:20:21,955~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:21,955~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:21,955~DEBUG~  x3 is freed  ~module:data_manager~function:data_manager
+2021-12-08 05:20:21,955~DEBUG~  newly freed data: x3 x8  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,955~INFO~  Current Time: 9  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,955~DEBUG~  Detecting deadlock @ tick 9  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,955~INFO~  site 2 recovering  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,955~DEBUG~  Calling Data Manager to fail site 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,955~INFO~  Recovered site: 2  ~module:data_manager~function:data_manager
+2021-12-08 05:20:21,955~DEBUG~  Recovering site 2  ~module:site~function:site
+2021-12-08 05:20:21,955~INFO~  Current Time: 10  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,955~DEBUG~  Detecting deadlock @ tick 10  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,955~INFO~  end T1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,955~DEBUG~  Aborting transaction: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,955~INFO~  Abort transaction 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,955~DEBUG~  Releasing Locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,955~INFO~  Release lock held by T1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,955~DEBUG~  Calling Data Managers release lock.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,955~DEBUG~  Removing lock from the variable x1  ~module:site~function:site
+2021-12-08 05:20:21,955~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:21,955~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:21,955~DEBUG~  x1 is freed  ~module:data_manager~function:data_manager
+2021-12-08 05:20:21,955~DEBUG~  Removing lock from the variable x5  ~module:site~function:site
+2021-12-08 05:20:21,955~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:21,955~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:21,955~DEBUG~  x5 is freed  ~module:data_manager~function:data_manager
+2021-12-08 05:20:21,955~DEBUG~  newly freed data: x1 x5  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,955~INFO~  Current Time: 11  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,955~DEBUG~  Detecting deadlock @ tick 11  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,955~INFO~  dump all data  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:21,956~DEBUG~  Calling Data Managers dump().  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,845~INFO~  Initialized Sites  ~module:data_manager~function:data_manager
+2021-12-08 05:20:25,845~INFO~  Initialized variable on respective sites  ~module:data_manager~function:data_manager
+2021-12-08 05:20:25,845~DEBUG~  Reading file ./input/input3.7  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,845~DEBUG~  Opening file ./input/input3.7  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,846~INFO~  Current Time: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,846~DEBUG~  Detecting deadlock @ tick 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,846~INFO~  begin T1 @ tick 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,846~INFO~  Current Time: 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,846~DEBUG~  Detecting deadlock @ tick 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,846~INFO~  begin T2 @ tick 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,846~INFO~  Current Time: 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,846~DEBUG~  Detecting deadlock @ tick 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,846~INFO~  T1 requested to read x3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,846~DEBUG~  Calling the Data Manager to read x3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,846~DEBUG~  Acquiring lock LockType.READon variable x3  ~module:site~function:site
+2021-12-08 05:20:25,846~DEBUG~  Adding lock LockType.READ to transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:25,846~DEBUG~  Updating lock type to LockType.READ  ~module:lock~function:lock
+2021-12-08 05:20:25,846~INFO~  Transaction ID: 1 read x3 : 30  ~module:data_manager~function:data_manager
+2021-12-08 05:20:25,846~INFO~  Read successful. Written to site(s): [4]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,846~INFO~  Current Time: 4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,846~DEBUG~  Detecting deadlock @ tick 4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,846~INFO~  T2 requested to write x8 as 88  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,846~DEBUG~  Calling the Data Manager to write x8  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,846~DEBUG~  Acquiring lock LockType.WRITEon variable x8  ~module:site~function:site
+2021-12-08 05:20:25,846~DEBUG~  Adding lock LockType.WRITE to transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:25,846~DEBUG~  Updating lock type to LockType.WRITE  ~module:lock~function:lock
+2021-12-08 05:20:25,846~DEBUG~  Write locked on x8 by 2  ~module:data_manager~function:data_manager
+2021-12-08 05:20:25,846~INFO~  Write successful. Written to site(s): [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,846~INFO~  Current Time: 5  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~DEBUG~  Detecting deadlock @ tick 5  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~INFO~  site 2 failing  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~DEBUG~  Calling Data Manager to fail site 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~INFO~  Failed site: 2  ~module:data_manager~function:data_manager
+2021-12-08 05:20:25,847~DEBUG~  Failing site 2  ~module:site~function:site
+2021-12-08 05:20:25,847~INFO~  Current Time: 6  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~DEBUG~  Detecting deadlock @ tick 6  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~INFO~  T2 requested to read x3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~DEBUG~  Calling the Data Manager to read x3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~DEBUG~  Acquiring lock LockType.READon variable x3  ~module:site~function:site
+2021-12-08 05:20:25,847~DEBUG~  Adding lock LockType.READ to transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:25,847~DEBUG~  Updating lock type to LockType.READ  ~module:lock~function:lock
+2021-12-08 05:20:25,847~INFO~  Transaction ID: 2 read x3 : 30  ~module:data_manager~function:data_manager
+2021-12-08 05:20:25,847~INFO~  Read successful. Written to site(s): [4]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~INFO~  Current Time: 7  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~DEBUG~  Detecting deadlock @ tick 7  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~INFO~  site 2 recovering  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~DEBUG~  Calling Data Manager to fail site 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~INFO~  Recovered site: 2  ~module:data_manager~function:data_manager
+2021-12-08 05:20:25,847~DEBUG~  Recovering site 2  ~module:site~function:site
+2021-12-08 05:20:25,847~INFO~  Current Time: 8  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~DEBUG~  Detecting deadlock @ tick 8  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~INFO~  T1 requested to write x4 as 91  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~DEBUG~  Calling the Data Manager to write x4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~DEBUG~  Acquiring lock LockType.WRITEon variable x4  ~module:site~function:site
+2021-12-08 05:20:25,847~DEBUG~  Adding lock LockType.WRITE to transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:25,847~DEBUG~  Updating lock type to LockType.WRITE  ~module:lock~function:lock
+2021-12-08 05:20:25,847~DEBUG~  Write locked on x4 by 1  ~module:data_manager~function:data_manager
+2021-12-08 05:20:25,847~INFO~  Write successful. Written to site(s): [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~INFO~  Current Time: 9  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~DEBUG~  Detecting deadlock @ tick 9  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~INFO~  end T2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~DEBUG~  Aborting transaction: 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~INFO~  Abort transaction 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~DEBUG~  Releasing Locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~INFO~  Release lock held by T2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~DEBUG~  Calling Data Managers release lock.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,847~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:25,847~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:25,847~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:25,847~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:25,847~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:25,847~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:25,847~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:25,847~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:25,847~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:25,847~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:25,847~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:25,847~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:25,847~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:25,847~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:25,847~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:25,847~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:25,848~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:25,848~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:25,848~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:25,848~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:25,848~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:25,848~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:25,848~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:25,848~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:25,848~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:25,848~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:25,848~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:25,848~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:25,848~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:25,848~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:25,848~DEBUG~  x8 is freed  ~module:data_manager~function:data_manager
+2021-12-08 05:20:25,848~DEBUG~  Removing lock from the variable x3  ~module:site~function:site
+2021-12-08 05:20:25,848~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:25,848~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:25,848~DEBUG~  x3 is freed  ~module:data_manager~function:data_manager
+2021-12-08 05:20:25,848~DEBUG~  newly freed data: x3 x8  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,848~INFO~  Current Time: 10  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,848~DEBUG~  Detecting deadlock @ tick 10  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,848~INFO~  end T1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,848~DEBUG~  Committing transaction: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,848~INFO~  Commit transaction 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,848~DEBUG~  Calling Data Managers commit.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,848~DEBUG~  Writing value 91to variable x4  ~module:site~function:site
+2021-12-08 05:20:25,848~INFO~  Variable: x4 = 91 written in 1  ~module:data_manager~function:data_manager
+2021-12-08 05:20:25,848~DEBUG~  Writing value 91to variable x4  ~module:site~function:site
+2021-12-08 05:20:25,848~INFO~  Variable: x4 = 91 written in 2  ~module:data_manager~function:data_manager
+2021-12-08 05:20:25,848~DEBUG~  Writing value 91to variable x4  ~module:site~function:site
+2021-12-08 05:20:25,848~INFO~  Variable: x4 = 91 written in 3  ~module:data_manager~function:data_manager
+2021-12-08 05:20:25,848~DEBUG~  Writing value 91to variable x4  ~module:site~function:site
+2021-12-08 05:20:25,848~INFO~  Variable: x4 = 91 written in 4  ~module:data_manager~function:data_manager
+2021-12-08 05:20:25,848~DEBUG~  Writing value 91to variable x4  ~module:site~function:site
+2021-12-08 05:20:25,848~INFO~  Variable: x4 = 91 written in 5  ~module:data_manager~function:data_manager
+2021-12-08 05:20:25,848~DEBUG~  Writing value 91to variable x4  ~module:site~function:site
+2021-12-08 05:20:25,848~INFO~  Variable: x4 = 91 written in 6  ~module:data_manager~function:data_manager
+2021-12-08 05:20:25,848~DEBUG~  Writing value 91to variable x4  ~module:site~function:site
+2021-12-08 05:20:25,848~INFO~  Variable: x4 = 91 written in 7  ~module:data_manager~function:data_manager
+2021-12-08 05:20:25,848~DEBUG~  Writing value 91to variable x4  ~module:site~function:site
+2021-12-08 05:20:25,848~INFO~  Variable: x4 = 91 written in 8  ~module:data_manager~function:data_manager
+2021-12-08 05:20:25,848~DEBUG~  Writing value 91to variable x4  ~module:site~function:site
+2021-12-08 05:20:25,848~INFO~  Variable: x4 = 91 written in 9  ~module:data_manager~function:data_manager
+2021-12-08 05:20:25,848~DEBUG~  Writing value 91to variable x4  ~module:site~function:site
+2021-12-08 05:20:25,848~INFO~  Variable: x4 = 91 written in 10  ~module:data_manager~function:data_manager
+2021-12-08 05:20:25,848~DEBUG~  Write to DB successful.  ~module:data_manager~function:data_manager
+2021-12-08 05:20:25,848~DEBUG~  Releasing Locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,848~INFO~  Release lock held by T1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,848~DEBUG~  Calling Data Managers release lock.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,848~DEBUG~  Removing lock from the variable x3  ~module:site~function:site
+2021-12-08 05:20:25,848~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:25,848~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:25,848~DEBUG~  x3 is freed  ~module:data_manager~function:data_manager
+2021-12-08 05:20:25,848~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:20:25,848~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:25,848~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:25,848~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:20:25,848~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:25,848~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:25,849~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:20:25,849~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:25,849~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:25,849~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:20:25,849~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:25,849~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:25,849~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:20:25,849~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:25,849~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:25,849~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:20:25,849~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:25,849~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:25,849~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:20:25,849~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:25,849~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:25,849~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:20:25,849~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:25,849~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:25,849~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:20:25,849~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:25,849~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:25,849~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:20:25,849~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:25,849~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:25,849~DEBUG~  x4 is freed  ~module:data_manager~function:data_manager
+2021-12-08 05:20:25,849~DEBUG~  newly freed data: x3 x4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,849~INFO~  Current Time: 11  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,849~DEBUG~  Detecting deadlock @ tick 11  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,849~INFO~  dump all data  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:25,849~DEBUG~  Calling Data Managers dump().  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:30,050~INFO~  Initialized Sites  ~module:data_manager~function:data_manager
+2021-12-08 05:20:30,050~INFO~  Initialized variable on respective sites  ~module:data_manager~function:data_manager
+2021-12-08 05:20:30,050~DEBUG~  Reading file ./input/input3.4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:30,050~DEBUG~  Opening file ./input/input3.4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:30,050~ERROR~  Error while opening file ./input/input3.4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,754~INFO~  Initialized Sites  ~module:data_manager~function:data_manager
+2021-12-08 05:20:32,754~INFO~  Initialized variable on respective sites  ~module:data_manager~function:data_manager
+2021-12-08 05:20:32,754~DEBUG~  Reading file ./input/input3.5  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,754~DEBUG~  Opening file ./input/input3.5  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,755~INFO~  Current Time: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,755~DEBUG~  Detecting deadlock @ tick 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,755~INFO~  begin T1 @ tick 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,755~INFO~  Current Time: 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,755~DEBUG~  Detecting deadlock @ tick 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,755~INFO~  begin T2 @ tick 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,755~INFO~  Current Time: 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,755~DEBUG~  Detecting deadlock @ tick 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,755~INFO~  T1 requested to read x3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,755~DEBUG~  Calling the Data Manager to read x3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,755~DEBUG~  Acquiring lock LockType.READon variable x3  ~module:site~function:site
+2021-12-08 05:20:32,755~DEBUG~  Adding lock LockType.READ to transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:32,755~DEBUG~  Updating lock type to LockType.READ  ~module:lock~function:lock
+2021-12-08 05:20:32,755~INFO~  Transaction ID: 1 read x3 : 30  ~module:data_manager~function:data_manager
+2021-12-08 05:20:32,755~INFO~  Read successful. Written to site(s): [4]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,755~INFO~  Current Time: 4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,755~DEBUG~  Detecting deadlock @ tick 4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,755~INFO~  T2 requested to write x8 as 88  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~DEBUG~  Calling the Data Manager to write x8  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~DEBUG~  Acquiring lock LockType.WRITEon variable x8  ~module:site~function:site
+2021-12-08 05:20:32,756~DEBUG~  Adding lock LockType.WRITE to transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:32,756~DEBUG~  Updating lock type to LockType.WRITE  ~module:lock~function:lock
+2021-12-08 05:20:32,756~DEBUG~  Write locked on x8 by 2  ~module:data_manager~function:data_manager
+2021-12-08 05:20:32,756~INFO~  Write successful. Written to site(s): [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~INFO~  Current Time: 5  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~DEBUG~  Detecting deadlock @ tick 5  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~INFO~  site 2 failing  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~DEBUG~  Calling Data Manager to fail site 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~INFO~  Failed site: 2  ~module:data_manager~function:data_manager
+2021-12-08 05:20:32,756~DEBUG~  Failing site 2  ~module:site~function:site
+2021-12-08 05:20:32,756~INFO~  Current Time: 6  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~DEBUG~  Detecting deadlock @ tick 6  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~INFO~  T2 requested to read x3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~DEBUG~  Calling the Data Manager to read x3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~DEBUG~  Acquiring lock LockType.READon variable x3  ~module:site~function:site
+2021-12-08 05:20:32,756~DEBUG~  Adding lock LockType.READ to transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:32,756~DEBUG~  Updating lock type to LockType.READ  ~module:lock~function:lock
+2021-12-08 05:20:32,756~INFO~  Transaction ID: 2 read x3 : 30  ~module:data_manager~function:data_manager
+2021-12-08 05:20:32,756~INFO~  Read successful. Written to site(s): [4]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~INFO~  Current Time: 7  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~DEBUG~  Detecting deadlock @ tick 7  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~INFO~  T1 requested to write x4 as 91  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~DEBUG~  Calling the Data Manager to write x4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~DEBUG~  Acquiring lock LockType.WRITEon variable x4  ~module:site~function:site
+2021-12-08 05:20:32,756~DEBUG~  Adding lock LockType.WRITE to transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:32,756~DEBUG~  Updating lock type to LockType.WRITE  ~module:lock~function:lock
+2021-12-08 05:20:32,756~DEBUG~  Write locked on x4 by 1  ~module:data_manager~function:data_manager
+2021-12-08 05:20:32,756~INFO~  Write successful. Written to site(s): [1, 3, 4, 5, 6, 7, 8, 9, 10]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~INFO~  Current Time: 8  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~DEBUG~  Detecting deadlock @ tick 8  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~INFO~  site 2 recovering  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~DEBUG~  Calling Data Manager to fail site 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~INFO~  Recovered site: 2  ~module:data_manager~function:data_manager
+2021-12-08 05:20:32,756~DEBUG~  Recovering site 2  ~module:site~function:site
+2021-12-08 05:20:32,756~INFO~  Current Time: 9  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~DEBUG~  Detecting deadlock @ tick 9  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~INFO~  end T2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~DEBUG~  Aborting transaction: 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~INFO~  Abort transaction 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~DEBUG~  Releasing Locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~INFO~  Release lock held by T2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~DEBUG~  Calling Data Managers release lock.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,756~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:32,756~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:32,756~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:32,756~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:32,756~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:32,757~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:32,757~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:32,757~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:32,757~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:32,757~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:32,757~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:32,757~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:32,757~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:32,757~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:32,757~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:32,757~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:32,757~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:32,757~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:32,757~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:32,757~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:32,757~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:32,757~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:32,757~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:32,757~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:32,757~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:32,757~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:32,757~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:32,757~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:32,757~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:32,757~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:32,757~DEBUG~  x8 is freed  ~module:data_manager~function:data_manager
+2021-12-08 05:20:32,757~DEBUG~  Removing lock from the variable x3  ~module:site~function:site
+2021-12-08 05:20:32,757~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:32,757~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:32,757~DEBUG~  x3 is freed  ~module:data_manager~function:data_manager
+2021-12-08 05:20:32,757~DEBUG~  newly freed data: x8 x3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,757~INFO~  Current Time: 10  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,757~DEBUG~  Detecting deadlock @ tick 10  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,757~INFO~  end T1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,757~DEBUG~  Committing transaction: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,757~INFO~  Commit transaction 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,757~DEBUG~  Calling Data Managers commit.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,757~DEBUG~  Writing value 91to variable x4  ~module:site~function:site
+2021-12-08 05:20:32,757~INFO~  Variable: x4 = 91 written in 1  ~module:data_manager~function:data_manager
+2021-12-08 05:20:32,757~DEBUG~  Writing value 91to variable x4  ~module:site~function:site
+2021-12-08 05:20:32,757~INFO~  Variable: x4 = 91 written in 3  ~module:data_manager~function:data_manager
+2021-12-08 05:20:32,757~DEBUG~  Writing value 91to variable x4  ~module:site~function:site
+2021-12-08 05:20:32,757~INFO~  Variable: x4 = 91 written in 4  ~module:data_manager~function:data_manager
+2021-12-08 05:20:32,757~DEBUG~  Writing value 91to variable x4  ~module:site~function:site
+2021-12-08 05:20:32,757~INFO~  Variable: x4 = 91 written in 5  ~module:data_manager~function:data_manager
+2021-12-08 05:20:32,757~DEBUG~  Writing value 91to variable x4  ~module:site~function:site
+2021-12-08 05:20:32,757~INFO~  Variable: x4 = 91 written in 6  ~module:data_manager~function:data_manager
+2021-12-08 05:20:32,757~DEBUG~  Writing value 91to variable x4  ~module:site~function:site
+2021-12-08 05:20:32,757~INFO~  Variable: x4 = 91 written in 7  ~module:data_manager~function:data_manager
+2021-12-08 05:20:32,757~DEBUG~  Writing value 91to variable x4  ~module:site~function:site
+2021-12-08 05:20:32,757~INFO~  Variable: x4 = 91 written in 8  ~module:data_manager~function:data_manager
+2021-12-08 05:20:32,757~DEBUG~  Writing value 91to variable x4  ~module:site~function:site
+2021-12-08 05:20:32,757~INFO~  Variable: x4 = 91 written in 9  ~module:data_manager~function:data_manager
+2021-12-08 05:20:32,757~DEBUG~  Writing value 91to variable x4  ~module:site~function:site
+2021-12-08 05:20:32,757~INFO~  Variable: x4 = 91 written in 10  ~module:data_manager~function:data_manager
+2021-12-08 05:20:32,757~DEBUG~  Write to DB successful.  ~module:data_manager~function:data_manager
+2021-12-08 05:20:32,757~DEBUG~  Releasing Locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,757~INFO~  Release lock held by T1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,758~DEBUG~  Calling Data Managers release lock.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,758~DEBUG~  Removing lock from the variable x3  ~module:site~function:site
+2021-12-08 05:20:32,758~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:32,758~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:32,758~DEBUG~  x3 is freed  ~module:data_manager~function:data_manager
+2021-12-08 05:20:32,758~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:20:32,758~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:32,758~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:32,758~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:20:32,758~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:32,758~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:32,758~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:20:32,758~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:32,758~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:32,758~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:20:32,758~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:32,758~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:32,758~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:20:32,758~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:32,758~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:32,758~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:20:32,758~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:32,758~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:32,758~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:20:32,758~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:32,758~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:32,758~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:20:32,758~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:32,758~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:32,758~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:20:32,758~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:32,758~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:32,758~DEBUG~  Removing lock from the variable x4  ~module:site~function:site
+2021-12-08 05:20:32,758~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:32,758~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:32,758~DEBUG~  x4 is freed  ~module:data_manager~function:data_manager
+2021-12-08 05:20:32,758~DEBUG~  newly freed data: x4 x3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,758~INFO~  Current Time: 11  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,758~DEBUG~  Detecting deadlock @ tick 11  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,758~INFO~  dump all data  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:32,758~DEBUG~  Calling Data Managers dump().  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,478~INFO~  Initialized Sites  ~module:data_manager~function:data_manager
+2021-12-08 05:20:35,478~INFO~  Initialized variable on respective sites  ~module:data_manager~function:data_manager
+2021-12-08 05:20:35,478~DEBUG~  Reading file ./input/input3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,478~DEBUG~  Opening file ./input/input3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,478~INFO~  Current Time: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,478~DEBUG~  Detecting deadlock @ tick 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,478~INFO~  begin T1 @ tick 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,478~INFO~  Current Time: 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,478~DEBUG~  Detecting deadlock @ tick 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,478~INFO~  begin T2 @ tick 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,478~INFO~  Current Time: 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,478~DEBUG~  Detecting deadlock @ tick 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,478~INFO~  T1 requested to read x3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,478~DEBUG~  Calling the Data Manager to read x3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,478~DEBUG~  Acquiring lock LockType.READon variable x3  ~module:site~function:site
+2021-12-08 05:20:35,478~DEBUG~  Adding lock LockType.READ to transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:35,478~DEBUG~  Updating lock type to LockType.READ  ~module:lock~function:lock
+2021-12-08 05:20:35,478~INFO~  Transaction ID: 1 read x3 : 30  ~module:data_manager~function:data_manager
+2021-12-08 05:20:35,478~INFO~  Read successful. Written to site(s): [4]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,478~INFO~  Current Time: 4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,478~DEBUG~  Detecting deadlock @ tick 4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,478~INFO~  site 2 failing  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,478~DEBUG~  Calling Data Manager to fail site 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,479~INFO~  Failed site: 2  ~module:data_manager~function:data_manager
+2021-12-08 05:20:35,479~DEBUG~  Failing site 2  ~module:site~function:site
+2021-12-08 05:20:35,479~INFO~  Current Time: 5  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,479~DEBUG~  Detecting deadlock @ tick 5  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,479~INFO~  T2 requested to write x8 as 88  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,479~DEBUG~  Calling the Data Manager to write x8  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,479~DEBUG~  Acquiring lock LockType.WRITEon variable x8  ~module:site~function:site
+2021-12-08 05:20:35,479~DEBUG~  Adding lock LockType.WRITE to transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:35,479~DEBUG~  Updating lock type to LockType.WRITE  ~module:lock~function:lock
+2021-12-08 05:20:35,479~DEBUG~  Write locked on x8 by 2  ~module:data_manager~function:data_manager
+2021-12-08 05:20:35,479~INFO~  Write successful. Written to site(s): [1, 3, 4, 5, 6, 7, 8, 9, 10]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,479~INFO~  Current Time: 6  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,479~DEBUG~  Detecting deadlock @ tick 6  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,479~INFO~  T2 requested to read x3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,479~DEBUG~  Calling the Data Manager to read x3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,479~DEBUG~  Acquiring lock LockType.READon variable x3  ~module:site~function:site
+2021-12-08 05:20:35,479~DEBUG~  Adding lock LockType.READ to transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:35,479~DEBUG~  Updating lock type to LockType.READ  ~module:lock~function:lock
+2021-12-08 05:20:35,479~INFO~  Transaction ID: 2 read x3 : 30  ~module:data_manager~function:data_manager
+2021-12-08 05:20:35,479~INFO~  Read successful. Written to site(s): [4]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,479~INFO~  Current Time: 7  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,479~DEBUG~  Detecting deadlock @ tick 7  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,479~INFO~  T1 requested to write x5 as 91  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,479~DEBUG~  Calling the Data Manager to write x5  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,479~DEBUG~  Acquiring lock LockType.WRITEon variable x5  ~module:site~function:site
+2021-12-08 05:20:35,479~DEBUG~  Adding lock LockType.WRITE to transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:35,479~DEBUG~  Updating lock type to LockType.WRITE  ~module:lock~function:lock
+2021-12-08 05:20:35,479~DEBUG~  Write locked on x5 by 1  ~module:data_manager~function:data_manager
+2021-12-08 05:20:35,479~INFO~  Write successful. Written to site(s): [6]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,479~INFO~  Current Time: 8  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,479~DEBUG~  Detecting deadlock @ tick 8  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,479~INFO~  end T2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,479~DEBUG~  Committing transaction: 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,479~INFO~  Commit transaction 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,479~DEBUG~  Calling Data Managers commit.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,479~DEBUG~  Writing value 88to variable x8  ~module:site~function:site
+2021-12-08 05:20:35,479~INFO~  Variable: x8 = 88 written in 1  ~module:data_manager~function:data_manager
+2021-12-08 05:20:35,479~DEBUG~  Writing value 88to variable x8  ~module:site~function:site
+2021-12-08 05:20:35,479~INFO~  Variable: x8 = 88 written in 3  ~module:data_manager~function:data_manager
+2021-12-08 05:20:35,479~DEBUG~  Writing value 88to variable x8  ~module:site~function:site
+2021-12-08 05:20:35,479~INFO~  Variable: x8 = 88 written in 4  ~module:data_manager~function:data_manager
+2021-12-08 05:20:35,479~DEBUG~  Writing value 88to variable x8  ~module:site~function:site
+2021-12-08 05:20:35,479~INFO~  Variable: x8 = 88 written in 5  ~module:data_manager~function:data_manager
+2021-12-08 05:20:35,479~DEBUG~  Writing value 88to variable x8  ~module:site~function:site
+2021-12-08 05:20:35,479~INFO~  Variable: x8 = 88 written in 6  ~module:data_manager~function:data_manager
+2021-12-08 05:20:35,479~DEBUG~  Writing value 88to variable x8  ~module:site~function:site
+2021-12-08 05:20:35,479~INFO~  Variable: x8 = 88 written in 7  ~module:data_manager~function:data_manager
+2021-12-08 05:20:35,479~DEBUG~  Writing value 88to variable x8  ~module:site~function:site
+2021-12-08 05:20:35,479~INFO~  Variable: x8 = 88 written in 8  ~module:data_manager~function:data_manager
+2021-12-08 05:20:35,479~DEBUG~  Writing value 88to variable x8  ~module:site~function:site
+2021-12-08 05:20:35,479~INFO~  Variable: x8 = 88 written in 9  ~module:data_manager~function:data_manager
+2021-12-08 05:20:35,479~DEBUG~  Writing value 88to variable x8  ~module:site~function:site
+2021-12-08 05:20:35,480~INFO~  Variable: x8 = 88 written in 10  ~module:data_manager~function:data_manager
+2021-12-08 05:20:35,480~DEBUG~  Write to DB successful.  ~module:data_manager~function:data_manager
+2021-12-08 05:20:35,480~DEBUG~  Releasing Locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,480~INFO~  Release lock held by T2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,480~DEBUG~  Calling Data Managers release lock.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,480~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:35,480~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:35,480~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:35,480~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:35,480~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:35,480~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:35,480~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:35,480~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:35,480~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:35,480~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:35,480~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:35,480~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:35,480~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:35,480~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:35,480~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:35,480~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:35,480~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:35,480~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:35,480~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:35,480~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:35,480~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:35,480~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:35,480~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:35,480~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:35,480~DEBUG~  Removing lock from the variable x8  ~module:site~function:site
+2021-12-08 05:20:35,480~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:35,480~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:35,480~DEBUG~  x8 is freed  ~module:data_manager~function:data_manager
+2021-12-08 05:20:35,480~DEBUG~  Removing lock from the variable x3  ~module:site~function:site
+2021-12-08 05:20:35,480~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:35,480~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:35,480~DEBUG~  x3 is freed  ~module:data_manager~function:data_manager
+2021-12-08 05:20:35,480~DEBUG~  newly freed data: x8 x3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,480~INFO~  Current Time: 9  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,480~DEBUG~  Detecting deadlock @ tick 9  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,480~INFO~  site 2 recovering  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,480~DEBUG~  Calling Data Manager to fail site 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,480~INFO~  Recovered site: 2  ~module:data_manager~function:data_manager
+2021-12-08 05:20:35,480~DEBUG~  Recovering site 2  ~module:site~function:site
+2021-12-08 05:20:35,480~INFO~  Current Time: 10  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,480~DEBUG~  Detecting deadlock @ tick 10  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,480~INFO~  end T1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,480~DEBUG~  Committing transaction: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,480~INFO~  Commit transaction 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,480~DEBUG~  Calling Data Managers commit.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,480~DEBUG~  Writing value 91to variable x5  ~module:site~function:site
+2021-12-08 05:20:35,480~INFO~  Variable: x5 = 91 written in 6  ~module:data_manager~function:data_manager
+2021-12-08 05:20:35,481~DEBUG~  Write to DB successful.  ~module:data_manager~function:data_manager
+2021-12-08 05:20:35,481~DEBUG~  Releasing Locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,481~INFO~  Release lock held by T1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,481~DEBUG~  Calling Data Managers release lock.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,481~DEBUG~  Removing lock from the variable x3  ~module:site~function:site
+2021-12-08 05:20:35,481~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:35,481~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:35,481~DEBUG~  x3 is freed  ~module:data_manager~function:data_manager
+2021-12-08 05:20:35,481~DEBUG~  Removing lock from the variable x5  ~module:site~function:site
+2021-12-08 05:20:35,481~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:35,481~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:35,481~DEBUG~  x5 is freed  ~module:data_manager~function:data_manager
+2021-12-08 05:20:35,481~DEBUG~  newly freed data: x5 x3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,481~INFO~  Current Time: 11  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,481~DEBUG~  Detecting deadlock @ tick 11  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,481~INFO~  dump all data  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:35,481~DEBUG~  Calling Data Managers dump().  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,600~INFO~  Initialized Sites  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,601~INFO~  Initialized variable on respective sites  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,601~DEBUG~  Reading file ./input/input2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,601~DEBUG~  Opening file ./input/input2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,601~INFO~  Current Time: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,601~DEBUG~  Detecting deadlock @ tick 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,601~INFO~  begin T1 @ tick 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,601~INFO~  Current Time: 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,601~DEBUG~  Detecting deadlock @ tick 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,601~INFO~  begin T2(read-only) @ tick 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,601~INFO~  Current Time: 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,601~DEBUG~  Detecting deadlock @ tick 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,601~INFO~  T1 requested to write x1 as 101  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,601~DEBUG~  Calling the Data Manager to write x1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,601~DEBUG~  Acquiring lock LockType.WRITEon variable x1  ~module:site~function:site
+2021-12-08 05:20:38,601~DEBUG~  Adding lock LockType.WRITE to transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:38,601~DEBUG~  Updating lock type to LockType.WRITE  ~module:lock~function:lock
+2021-12-08 05:20:38,601~DEBUG~  Write locked on x1 by 1  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,601~INFO~  Write successful. Written to site(s): [2]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,601~INFO~  Current Time: 4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,601~DEBUG~  Detecting deadlock @ tick 4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,601~INFO~  T2 requested to read x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,601~DEBUG~  Calling the Data Manager to read x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,601~INFO~  Cache updated with x2:20  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,601~INFO~  Cache updated with x4:40  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x6:60  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x8:80  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x10:100  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x12:120  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x14:140  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x16:160  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x18:180  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x20:200  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x1:10  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x2:20  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x4:40  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x6:60  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x8:80  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x10:100  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x11:110  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x12:120  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x14:140  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x16:160  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x18:180  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x20:200  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x2:20  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x4:40  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x6:60  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x8:80  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x10:100  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x12:120  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x14:140  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x16:160  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x18:180  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x20:200  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x2:20  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x3:30  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x4:40  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x6:60  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x8:80  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x10:100  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x12:120  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x13:130  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x14:140  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x16:160  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x18:180  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x20:200  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x2:20  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x4:40  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x6:60  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x8:80  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x10:100  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x12:120  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x14:140  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x16:160  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x18:180  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x20:200  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x2:20  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x4:40  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,602~INFO~  Cache updated with x5:50  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x6:60  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x8:80  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x10:100  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x12:120  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x14:140  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x15:150  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x16:160  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x18:180  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x20:200  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x2:20  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x4:40  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x6:60  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x8:80  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x10:100  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x12:120  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x14:140  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x16:160  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x18:180  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x20:200  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x2:20  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x4:40  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x6:60  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x7:70  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x8:80  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x10:100  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x12:120  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x14:140  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x16:160  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x17:170  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x18:180  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x20:200  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x2:20  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x4:40  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x6:60  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x8:80  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x10:100  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x12:120  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x14:140  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x16:160  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x18:180  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x20:200  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x2:20  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x4:40  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x6:60  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x8:80  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x10:100  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x12:120  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x14:140  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x16:160  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x18:180  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache updated with x20:200  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Cache generated for transaction 2  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Transaction ID: 2 of read only type read x2 : 20  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,603~INFO~  Read successful. Written to site(s): []  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,603~INFO~  Current Time: 5  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,603~DEBUG~  Detecting deadlock @ tick 5  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,604~INFO~  T1 requested to write x2 as 102  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,604~DEBUG~  Calling the Data Manager to write x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,604~DEBUG~  Acquiring lock LockType.WRITEon variable x2  ~module:site~function:site
+2021-12-08 05:20:38,604~DEBUG~  Adding lock LockType.WRITE to transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:38,604~DEBUG~  Updating lock type to LockType.WRITE  ~module:lock~function:lock
+2021-12-08 05:20:38,604~DEBUG~  Write locked on x2 by 1  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,604~INFO~  Write successful. Written to site(s): [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,604~INFO~  Current Time: 6  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,604~DEBUG~  Detecting deadlock @ tick 6  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,604~INFO~  T2 requested to read x1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,604~DEBUG~  Calling the Data Manager to read x1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,604~INFO~  Transaction ID: 2 of read only type read x1 : 10  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,604~INFO~  Read successful. Written to site(s): []  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,604~INFO~  Current Time: 7  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,604~DEBUG~  Detecting deadlock @ tick 7  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,604~INFO~  end T1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,604~DEBUG~  Committing transaction: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,604~INFO~  Commit transaction 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,604~DEBUG~  Calling Data Managers commit.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,604~DEBUG~  Writing value 101to variable x1  ~module:site~function:site
+2021-12-08 05:20:38,604~INFO~  Variable: x1 = 101 written in 2  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,604~DEBUG~  Write to DB successful.  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,604~DEBUG~  Writing value 102to variable x2  ~module:site~function:site
+2021-12-08 05:20:38,604~INFO~  Variable: x2 = 102 written in 1  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,604~DEBUG~  Writing value 102to variable x2  ~module:site~function:site
+2021-12-08 05:20:38,604~INFO~  Variable: x2 = 102 written in 2  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,604~DEBUG~  Writing value 102to variable x2  ~module:site~function:site
+2021-12-08 05:20:38,604~INFO~  Variable: x2 = 102 written in 3  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,604~DEBUG~  Writing value 102to variable x2  ~module:site~function:site
+2021-12-08 05:20:38,604~INFO~  Variable: x2 = 102 written in 4  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,604~DEBUG~  Writing value 102to variable x2  ~module:site~function:site
+2021-12-08 05:20:38,604~INFO~  Variable: x2 = 102 written in 5  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,604~DEBUG~  Writing value 102to variable x2  ~module:site~function:site
+2021-12-08 05:20:38,604~INFO~  Variable: x2 = 102 written in 6  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,604~DEBUG~  Writing value 102to variable x2  ~module:site~function:site
+2021-12-08 05:20:38,604~INFO~  Variable: x2 = 102 written in 7  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,604~DEBUG~  Writing value 102to variable x2  ~module:site~function:site
+2021-12-08 05:20:38,604~INFO~  Variable: x2 = 102 written in 8  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,604~DEBUG~  Writing value 102to variable x2  ~module:site~function:site
+2021-12-08 05:20:38,604~INFO~  Variable: x2 = 102 written in 9  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,604~DEBUG~  Writing value 102to variable x2  ~module:site~function:site
+2021-12-08 05:20:38,604~INFO~  Variable: x2 = 102 written in 10  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,604~DEBUG~  Write to DB successful.  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,604~DEBUG~  Releasing Locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,604~INFO~  Release lock held by T1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,604~DEBUG~  Calling Data Managers release lock.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,604~DEBUG~  Removing lock from the variable x1  ~module:site~function:site
+2021-12-08 05:20:38,604~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:38,604~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:38,604~DEBUG~  x1 is freed  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,604~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:38,604~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:38,604~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:38,605~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:38,605~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:38,605~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:38,605~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:38,605~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:38,605~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:38,605~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:38,605~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:38,605~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:38,605~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:38,605~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:38,605~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:38,605~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:38,605~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:38,605~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:38,605~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:38,605~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:38,605~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:38,605~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:38,605~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:38,605~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:38,605~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:38,605~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:38,605~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:38,605~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:38,605~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:38,605~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:38,605~DEBUG~  x2 is freed  ~module:data_manager~function:data_manager
+2021-12-08 05:20:38,605~DEBUG~  newly freed data: x1 x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,605~INFO~  Current Time: 8  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,605~DEBUG~  Detecting deadlock @ tick 8  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,605~INFO~  end T2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,605~DEBUG~  Committing transaction: 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,605~INFO~  Commit transaction 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,605~DEBUG~  Calling Data Managers commit.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,605~DEBUG~  Releasing Locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,605~INFO~  Release lock held by T2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,605~DEBUG~  Calling Data Managers release lock.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,605~DEBUG~  newly freed data:  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,605~INFO~  Current Time: 9  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,605~DEBUG~  Detecting deadlock @ tick 9  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,605~INFO~  dump all data  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:38,605~DEBUG~  Calling Data Managers dump().  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,302~INFO~  Initialized Sites  ~module:data_manager~function:data_manager
+2021-12-08 05:20:41,302~INFO~  Initialized variable on respective sites  ~module:data_manager~function:data_manager
+2021-12-08 05:20:41,302~DEBUG~  Reading file ./input/input1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,302~DEBUG~  Opening file ./input/input1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,302~INFO~  Current Time: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,302~DEBUG~  Detecting deadlock @ tick 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,302~INFO~  begin T1 @ tick 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,302~INFO~  Current Time: 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,302~DEBUG~  Detecting deadlock @ tick 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,302~INFO~  begin T2 @ tick 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,302~INFO~  Current Time: 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,302~DEBUG~  Detecting deadlock @ tick 3  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,302~INFO~  T1 requested to write x1 as 101  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,302~DEBUG~  Calling the Data Manager to write x1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,302~DEBUG~  Acquiring lock LockType.WRITEon variable x1  ~module:site~function:site
+2021-12-08 05:20:41,302~DEBUG~  Adding lock LockType.WRITE to transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:41,302~DEBUG~  Updating lock type to LockType.WRITE  ~module:lock~function:lock
+2021-12-08 05:20:41,302~DEBUG~  Write locked on x1 by 1  ~module:data_manager~function:data_manager
+2021-12-08 05:20:41,302~INFO~  Write successful. Written to site(s): [2]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,302~INFO~  Current Time: 4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,302~DEBUG~  Detecting deadlock @ tick 4  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,303~INFO~  T2 requested to write x2 as 202  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,303~DEBUG~  Calling the Data Manager to write x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,303~DEBUG~  Acquiring lock LockType.WRITEon variable x2  ~module:site~function:site
+2021-12-08 05:20:41,303~DEBUG~  Adding lock LockType.WRITE to transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:41,303~DEBUG~  Updating lock type to LockType.WRITE  ~module:lock~function:lock
+2021-12-08 05:20:41,303~DEBUG~  Write locked on x2 by 2  ~module:data_manager~function:data_manager
+2021-12-08 05:20:41,303~INFO~  Write successful. Written to site(s): [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,303~INFO~  Current Time: 5  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,303~DEBUG~  Detecting deadlock @ tick 5  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,303~INFO~  T1 requested to write x2 as 102  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,303~DEBUG~  Calling the Data Manager to write x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,303~DEBUG~  Write type lock  ~module:data_manager~function:data_manager
+2021-12-08 05:20:41,303~DEBUG~  Couldn't get the write lock. Trans:1  ~module:data_manager~function:data_manager
+2021-12-08 05:20:41,303~INFO~  Write unsuccessful. Blocked by site(s): [2]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,303~INFO~  Current Time: 6  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,303~DEBUG~  Detecting deadlock @ tick 6  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,303~INFO~  T2 requested to write x1 as 201  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,303~DEBUG~  Calling the Data Manager to write x1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,303~DEBUG~  Write type lock  ~module:data_manager~function:data_manager
+2021-12-08 05:20:41,303~DEBUG~  Couldn't get the write lock. Trans:2  ~module:data_manager~function:data_manager
+2021-12-08 05:20:41,303~INFO~  Write unsuccessful. Blocked by site(s): [1]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,303~INFO~  Current Time: 7  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,303~DEBUG~  Detecting deadlock @ tick 7  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,303~ERROR~  Deadlock detected.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,303~INFO~  Youngest transaction found. Aborting transaction 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,303~INFO~  Abort transaction 2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,303~DEBUG~  Releasing Locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,303~INFO~  Release lock held by T2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,303~DEBUG~  Calling Data Managers release lock.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,303~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:41,303~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:41,303~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:41,303~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:41,303~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:41,303~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:41,303~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:41,303~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:41,303~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:41,303~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:41,303~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:41,303~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:41,303~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:41,303~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:41,303~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:41,303~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:41,303~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:41,303~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:41,303~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:41,303~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:41,303~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:41,303~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:41,303~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:41,304~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:41,304~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:41,304~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:41,304~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:41,304~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:41,304~DEBUG~  Removing lock from transaction 2  ~module:lock~function:lock
+2021-12-08 05:20:41,304~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:41,304~DEBUG~  x2 is freed  ~module:data_manager~function:data_manager
+2021-12-08 05:20:41,304~DEBUG~  newly freed data: x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,304~DEBUG~  Calling retry after releasing locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,304~INFO~  Retrying transaction: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,304~INFO~  Retrying write transaction: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,304~INFO~  T1 requested to write x2 as 102  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,304~DEBUG~  Calling the Data Manager to write x2  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,304~DEBUG~  Acquiring lock LockType.WRITEon variable x2  ~module:site~function:site
+2021-12-08 05:20:41,304~DEBUG~  Adding lock LockType.WRITE to transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:41,304~DEBUG~  Updating lock type to LockType.WRITE  ~module:lock~function:lock
+2021-12-08 05:20:41,304~DEBUG~  Write locked on x2 by 1  ~module:data_manager~function:data_manager
+2021-12-08 05:20:41,304~INFO~  Write successful. Written to site(s): [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,304~INFO~  end T1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,304~DEBUG~  Committing transaction: 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,304~INFO~  Commit transaction 1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,304~DEBUG~  Calling Data Managers commit.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,304~DEBUG~  Writing value 101to variable x1  ~module:site~function:site
+2021-12-08 05:20:41,304~INFO~  Variable: x1 = 101 written in 2  ~module:data_manager~function:data_manager
+2021-12-08 05:20:41,304~DEBUG~  Write to DB successful.  ~module:data_manager~function:data_manager
+2021-12-08 05:20:41,304~DEBUG~  Writing value 102to variable x2  ~module:site~function:site
+2021-12-08 05:20:41,304~INFO~  Variable: x2 = 102 written in 1  ~module:data_manager~function:data_manager
+2021-12-08 05:20:41,304~DEBUG~  Writing value 102to variable x2  ~module:site~function:site
+2021-12-08 05:20:41,304~INFO~  Variable: x2 = 102 written in 2  ~module:data_manager~function:data_manager
+2021-12-08 05:20:41,304~DEBUG~  Writing value 102to variable x2  ~module:site~function:site
+2021-12-08 05:20:41,304~INFO~  Variable: x2 = 102 written in 3  ~module:data_manager~function:data_manager
+2021-12-08 05:20:41,304~DEBUG~  Writing value 102to variable x2  ~module:site~function:site
+2021-12-08 05:20:41,304~INFO~  Variable: x2 = 102 written in 4  ~module:data_manager~function:data_manager
+2021-12-08 05:20:41,304~DEBUG~  Writing value 102to variable x2  ~module:site~function:site
+2021-12-08 05:20:41,304~INFO~  Variable: x2 = 102 written in 5  ~module:data_manager~function:data_manager
+2021-12-08 05:20:41,304~DEBUG~  Writing value 102to variable x2  ~module:site~function:site
+2021-12-08 05:20:41,304~INFO~  Variable: x2 = 102 written in 6  ~module:data_manager~function:data_manager
+2021-12-08 05:20:41,304~DEBUG~  Writing value 102to variable x2  ~module:site~function:site
+2021-12-08 05:20:41,304~INFO~  Variable: x2 = 102 written in 7  ~module:data_manager~function:data_manager
+2021-12-08 05:20:41,304~DEBUG~  Writing value 102to variable x2  ~module:site~function:site
+2021-12-08 05:20:41,304~INFO~  Variable: x2 = 102 written in 8  ~module:data_manager~function:data_manager
+2021-12-08 05:20:41,304~DEBUG~  Writing value 102to variable x2  ~module:site~function:site
+2021-12-08 05:20:41,304~INFO~  Variable: x2 = 102 written in 9  ~module:data_manager~function:data_manager
+2021-12-08 05:20:41,304~DEBUG~  Writing value 102to variable x2  ~module:site~function:site
+2021-12-08 05:20:41,304~INFO~  Variable: x2 = 102 written in 10  ~module:data_manager~function:data_manager
+2021-12-08 05:20:41,304~DEBUG~  Write to DB successful.  ~module:data_manager~function:data_manager
+2021-12-08 05:20:41,304~DEBUG~  Releasing Locks.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,304~INFO~  Release lock held by T1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,304~DEBUG~  Calling Data Managers release lock.  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,304~DEBUG~  Removing lock from the variable x1  ~module:site~function:site
+2021-12-08 05:20:41,304~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:41,304~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:41,304~DEBUG~  x1 is freed  ~module:data_manager~function:data_manager
+2021-12-08 05:20:41,305~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:41,305~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:41,305~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:41,305~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:41,305~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:41,305~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:41,305~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:41,305~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:41,305~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:41,305~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:41,305~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:41,305~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:41,305~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:41,305~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:41,305~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:41,305~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:41,305~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:41,305~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:41,305~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:41,305~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:41,305~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:41,305~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:41,305~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:41,305~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:41,305~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:41,305~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:41,305~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:41,305~DEBUG~  Removing lock from the variable x2  ~module:site~function:site
+2021-12-08 05:20:41,305~DEBUG~  Removing lock from transaction 1  ~module:lock~function:lock
+2021-12-08 05:20:41,305~DEBUG~  Updated lock type to LockType.FREE  ~module:lock~function:lock
+2021-12-08 05:20:41,305~DEBUG~  x2 is freed  ~module:data_manager~function:data_manager
+2021-12-08 05:20:41,305~DEBUG~  newly freed data: x2 x1  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,305~INFO~  Current Time: 8  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,305~DEBUG~  Detecting deadlock @ tick 8  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,305~INFO~  dump all data  ~module:transaction_manager~function:transaction_manager
+2021-12-08 05:20:41,305~DEBUG~  Calling Data Managers dump().  ~module:transaction_manager~function:transaction_manager

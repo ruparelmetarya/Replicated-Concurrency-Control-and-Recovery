@@ -147,7 +147,7 @@ class TransactionManager:
                 error_msg = OPERATION_ERROR_MESSAGE.format(line_num=line, OP='[' + operation_name + ']', n=1)
                 raise ValueError(error_msg)
 
-            self.print_status()
+            # self.print_status()
 
     def begin(self, transaction_id, time, read_only=False):
         """
@@ -245,7 +245,7 @@ class TransactionManager:
         :param time: Current time of the system.
         :return: None
         """
-        LOGGER.info("site " + str(site_id) + " failed")
+        LOGGER.info("site " + str(site_id) + " failing")
         LOGGER.debug("Calling Data Manager to fail site " + str(site_id))
         self.DM.fail(site_id)
         self.fail_history[site_id].append(time)
@@ -259,8 +259,8 @@ class TransactionManager:
         :param site_id: ID of the site.
         :return: None
         """
-        msg = "recover site " + str(site_id)
-        print(msg)
+        LOGGER.info("site " + str(site_id) + " recovering")
+        LOGGER.debug("Calling Data Manager to fail site " + str(site_id))
         self.DM.recover(site_id)
 
     def end(self, transaction_id, time):
@@ -410,18 +410,18 @@ class TransactionManager:
         LOGGER.info("Release lock held by T" + str(transaction_id))
         locks = self.transaction_list[transaction_id].lock_list
         LOGGER.debug("Calling Data Managers release lock.")
-        free_data = self.DM.release_locks(transaction_id, locks)
+        free_datas = self.DM.release_locks(transaction_id, locks)
         msg = "newly freed data:"
-        for fd in free_data:
+        for fd in free_datas:
             msg += " " + str(fd)
         LOGGER.debug(msg)
         retry_list = []
-        for free_data in free_data:
+        for free_data in free_datas:
             if free_data in self.data_wait_table:
                 for tid in self.data_wait_table[free_data]:
                     if tid not in retry_list:
                         retry_list.append(tid)
-        for free_data in free_data:
+        for free_data in free_datas:
             if free_data in self.data_wait_table:
                 del self.data_wait_table[free_data]
         for tid in retry_list:

@@ -121,7 +121,7 @@ class Site:
         Fail a given site.
         :return: None
         """
-        LOGGER.debug("Failing site " + self.site_num)
+        LOGGER.debug("Failing site " + str(self.site_num))
         self.is_running = False
         self.is_recovered = False
         self.clear_lock_table()
@@ -133,7 +133,7 @@ class Site:
         Recover a given site.
         :return: None
         """
-        LOGGER.debug("Recovering site " + self.site_num)
+        LOGGER.debug("Recovering site " + str(self.site_num))
         self.timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         self.is_running = True
         for ID in self.variables:
