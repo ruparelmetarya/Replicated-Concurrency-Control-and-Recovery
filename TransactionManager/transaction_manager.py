@@ -180,10 +180,8 @@ class TransactionManager:
         LOGGER.info("T" + str(transaction_id) + " requested to write " + str(variable_id) + " as " + str(value))
         LOGGER.debug("Calling the Data Manager to write " + str(variable_id))
         write_result = self.DM.write(transaction_id, variable_id, self.block_table)
-        LOGGER.info(
-            "Write successful status: " + str(write_result[0]) + ". Written to site(s): " + write_result[1].__str__()
-        )
         if write_result[0]:
+            LOGGER.info("Write successful. Written to site(s): " + write_result[1].__str__())
             sites_touched = set(write_result[1])
             self.transaction_list.get(transaction_id).touch_set = sites_touched
             self.transaction_list.get(transaction_id).set_commit_list(variable_id, (value, set(write_result[1])))
@@ -192,6 +190,7 @@ class TransactionManager:
             if transaction_id in self.transaction_wait_table:
                 del self.transaction_wait_table[transaction_id]
         else:
+            LOGGER.info("Write unsuccessful. Blocked by site(s): " + write_result[1].__str__())
             self.data_wait_table[variable_id].append(transaction_id)
             blockers = write_result[1]
             for blocker in blockers:
